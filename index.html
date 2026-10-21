@@ -104,6 +104,9 @@ section.block{padding-block:80px}
 @media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.services{grid-template-columns:1fr}}
 
+.svc.photo{padding-top:0}
+.svc.photo img{display:block;width:calc(100% + 52px);max-width:none;margin-inline:-26px;height:auto;aspect-ratio:4/3;object-fit:cover;margin-bottom:10px}
+
 /* visites du château */
 .chateau{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,.8fr);gap:24px;align-items:end}
 .chateau .head{align-self:center;margin-bottom:0}
@@ -312,25 +315,25 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
       <p data-t="s-p">Habitant pressé, visiteur venu du bout du monde ou entreprise qui reçoit : je m'occupe du trajet, où que vous alliez en Île-de-France.</p>
     </div>
     <div class="services">
-      <article class="svc">
-        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 17l24-7-2-3-9 2-7-5-3 1 4 6-6 2-2-2-2 1 3 5z"/><path d="M3 26h24"/></svg>
+      <article class="svc photo">
+        <img src="images/aeroport.jpg" alt="Avion au décollage" width="900" height="506" loading="lazy" style="object-position:50% 50%">
         <h3 data-t="sv1">Aéroports</h3>
         <p data-t="sv1p">Orly, Roissy-Charles-de-Gaulle, Beauvais. Suivi de votre vol et accueil avec pancarte au terminal.</p>
+      </article>
+      <article class="svc photo">
+        <img src="images/tour-eiffel.jpg" alt="La Tour Eiffel au bord de la Seine" width="700" height="1050" loading="lazy" style="object-position:50% 35%">
+        <h3 data-t="sv3">Château &amp; Paris</h3>
+        <p data-t="sv3p">Dépose à la grille du Château, attente pendant la visite, Trianons, puis Tour Eiffel ou Paris by night.</p>
+      </article>
+      <article class="svc photo">
+        <img src="images/disneyland.jpg" alt="Le château de Disneyland Paris" width="700" height="1049" loading="lazy" style="object-position:50% 40%">
+        <h3 data-t="sv4">Disneyland Paris</h3>
+        <p data-t="sv4p">Trajet direct jusqu'aux parcs et hôtels Disney, sièges enfants fournis, idéal en famille.</p>
       </article>
       <article class="svc">
         <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="7" y="4" width="16" height="18" rx="3"/><path d="M7 14h16M11 22l-3 5M19 22l3 5"/><circle cx="11" cy="18" r="1"/><circle cx="19" cy="18" r="1"/></svg>
         <h3 data-t="sv2">Gares</h3>
         <p data-t="sv2p">Montparnasse, gare de Lyon, gare du Nord, Massy TGV, Versailles-Chantiers. Aide aux bagages comprise.</p>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M5 26V13h20v13M3 13l12-8 12 8M10 26v-7h10v7M15 5V2"/></svg>
-        <h3 data-t="sv3">Château &amp; Paris</h3>
-        <p data-t="sv3p">Dépose à la grille du Château, attente pendant la visite, Trianons, puis Tour Eiffel ou Paris by night.</p>
-      </article>
-      <article class="svc">
-        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 26h22M15 4l-4 9h8zM9 26l6-13 6 13M12 19h6"/></svg>
-        <h3 data-t="sv4">Disneyland Paris</h3>
-        <p data-t="sv4p">Trajet direct jusqu'aux parcs et hôtels Disney, sièges enfants fournis, idéal en famille.</p>
       </article>
       <article class="svc">
         <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="9" width="22" height="16" rx="2"/><path d="M11 9V6h8v3M4 16h22"/></svg>
