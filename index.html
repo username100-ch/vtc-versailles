@@ -104,6 +104,17 @@ section.block{padding-block:80px}
 @media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.services{grid-template-columns:1fr}}
 
+/* visites du château */
+.chateau{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,.8fr);gap:24px;align-items:end}
+.chateau .head{align-self:center;margin-bottom:0}
+.chateau .btn{justify-self:start;margin-top:8px}
+.chateau figure{margin:0;display:grid;gap:10px}
+.chateau img{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:3/4;object-fit:cover;border:1px solid rgba(231,207,143,.45);padding:5px}
+.chateau figcaption{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or-soft)}
+.chateau figure.lift{transform:translateY(-32px)}
+@media (max-width:900px){.chateau{grid-template-columns:repeat(2,minmax(0,1fr))}.chateau .head{grid-column:1/-1}.chateau figure.lift{transform:none}}
+@media (max-width:480px){.chateau{grid-template-columns:1fr}}
+
 /* véhicule */
 .vehicule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
 .car-card{background:var(--paper);border:1px solid var(--line);padding:28px;display:grid;gap:18px}
@@ -335,6 +346,19 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   </div>
 </section>
 
+<section class="block band" id="chateau">
+  <div class="wrap chateau">
+    <div class="head">
+      <p class="eyebrow" data-t="ch-eye">Visites du Château</p>
+      <h2 data-t="ch-h">Versailles, à quelques minutes de chez vous</h2>
+      <p data-t="ch-p">Je vous dépose au plus près de l'entrée du Château, je vous attends pendant votre visite, puis je vous emmène aux Trianons, dans les jardins ou vers Paris.</p>
+      <a class="btn" href="#reserver" data-t="cta">Demander une course</a>
+    </div>
+    <figure><img src="images/cour-de-marbre.jpg" alt="La cour de Marbre du château de Versailles" width="720" height="960" loading="lazy"><figcaption data-t="ch-c1">La cour de Marbre</figcaption></figure>
+    <figure class="lift"><img src="images/galerie-des-batailles.jpg" alt="La galerie des Batailles du château de Versailles" width="720" height="1082" loading="lazy"><figcaption data-t="ch-c2">La galerie des Batailles</figcaption></figure>
+  </div>
+</section>
+
 <section class="block" id="vehicule" style="background:var(--paper)">
   <div class="wrap vehicule">
     <div class="car-card" style="background:var(--stone)">
@@ -516,6 +540,9 @@ sv3:["Palace & Paris","القصر وباريس"],sv3p:["Drop-off at the Palace g
 sv4:["Disneyland Paris","ديزني لاند باريس"],sv4p:["Direct to the parks and Disney hotels, child seats provided, ideal for families.","رحلة مباشرة إلى المتنزهات وفنادق ديزني، مع مقاعد للأطفال، مثالية للعائلات."],
 sv5:["Business travel","رحلات العمل"],sv5p:["La Défense, Vélizy, Saint-Quentin, Paris. Invoices on request, company accounts available.","لا ديفانس، فيليزي، سان كانتان، باريس. فاتورة عند الطلب وإمكانية فتح حساب للشركات."],
 sv6:["Hourly hire","سائق بالساعة"],sv6p:["A driver for a few hours or the whole day: weddings, evenings out, shopping, meetings.","سائق تحت تصرفكم لبضع ساعات أو ليوم كامل: حفلات الزفاف، السهرات، التسوق، المواعيد."],
+"ch-eye":["Palace visits","زيارات القصر"],"ch-h":["Versailles, just minutes away","قصر فرساي على بُعد دقائق"],
+"ch-p":["I drop you as close as possible to the Palace entrance, wait during your visit, then take you on to the Trianons, the gardens or Paris.","أوصلكم إلى أقرب نقطة من مدخل القصر، وأنتظركم أثناء الزيارة، ثم أرافقكم إلى قصور التريانون أو الحدائق أو باريس."],
+"ch-c1":["The Marble Courtyard","ساحة الرخام"],"ch-c2":["The Gallery of Battles","قاعة المعارك"],
 "v-type":["Hybrid estate car","سيارة ستيشن هجينة"],"v-cap":["passengers maximum","ركاب كحد أقصى"],
 "v-eye":["Your car","سيارتكم"],
 "v-h":["I pick you up in a Toyota Corolla Touring Sports","آتي لاصطحابكم بسيارة تويوتا كورولا تورينغ سبورتس"],
