@@ -162,6 +162,16 @@ bdi{unicode-bidi:isolate}
 .recap .btn.wa-send{background:#1f9d55;border-color:#1f9d55;color:#fff}
 .recap .btn.wa-send:hover{background:#178a49}
 
+/* suggestions d'adresses */
+.ac{position:relative;min-width:0}
+.ac-list{position:absolute;z-index:30;inset-inline:0;top:calc(100% + 4px);margin:0;padding:4px;list-style:none;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:4px;box-shadow:0 12px 28px rgba(0,0,0,.28);max-height:300px;overflow-y:auto;text-align:start;min-width:min(360px,calc(100vw - 32px))}
+.ac-list li{display:flex;align-items:baseline;gap:10px;padding:9px 10px;border-radius:3px;cursor:pointer;font-size:.9rem;line-height:1.35}
+.ac-list li[aria-selected="true"],.ac-list li:hover{background:var(--stone)}
+.ac-list .tag{flex:none;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--or);min-width:4.8em}
+.ac-list .lab{min-width:0;overflow-wrap:anywhere}
+.ac-list .lab small{display:block;color:var(--muted);font-size:.78rem}
+.hero{overflow:visible;z-index:3}
+
 /* sections */
 section.block{padding-block:80px}
 .head{display:grid;gap:12px;max-width:660px;margin-bottom:40px}
@@ -479,7 +489,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
         <label><input type="radio" name="qbtype" id="qb-ar-r" value="ar"><span data-t="qb-ar">Aller-retour</span></label>
       </div>
       <div class="qb-grid">
-        <div class="qf qf-wide"><label for="qb-dep" data-t="qb-dep">Départ</label><input id="qb-dep" autocomplete="street-address" required></div>
+        <div class="qf qf-wide"><label for="qb-dep" data-t="qb-dep">Départ</label><input id="qb-dep" autocomplete="off" required></div>
         <div class="qf qf-wide"><label for="qb-arr" data-t="qb-arr">Arrivée</label><input id="qb-arr" required></div>
         <div class="qf"><label for="qb-date" data-t="qb-date">Date</label><input id="qb-date" type="date" required></div>
         <div class="qf"><label for="qb-time" data-t="qb-time">Heure</label><input id="qb-time" type="time" required></div>
@@ -935,6 +945,108 @@ qb.addEventListener('submit',function(e){
   document.getElementById('reserver').scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(function(){try{document.getElementById('nom').focus({preventScroll:true});}catch(err){}},600);
 });
+/* ---------- suggestions d'adresses ---------- */
+var POI=[
+['air',"Aéroport Paris-Orly","Orly 94390","orly aeroport airport"],
+['air',"Aéroport Roissy-Charles-de-Gaulle, Terminal 1","Roissy-en-France 95700","cdg roissy charles de gaulle aeroport airport t1"],
+['air',"Aéroport Roissy-Charles-de-Gaulle, Terminal 2E","Roissy-en-France 95700","cdg roissy charles de gaulle aeroport airport t2 2e"],
+['air',"Aéroport Roissy-Charles-de-Gaulle, Terminal 2F","Roissy-en-France 95700","cdg roissy charles de gaulle aeroport airport t2 2f"],
+['air',"Aéroport Roissy-Charles-de-Gaulle, Terminal 3","Roissy-en-France 95700","cdg roissy charles de gaulle aeroport airport t3"],
+['air',"Aéroport de Beauvais-Tillé","Tillé 60000","beauvais aeroport airport ryanair"],
+['gare',"Gare Montparnasse","Paris 15e","montparnasse train station tgv"],
+['gare',"Gare de Lyon","Paris 12e","lyon train station tgv"],
+['gare',"Gare du Nord (Eurostar)","Paris 10e","nord eurostar londres london train station"],
+['gare',"Gare de l'Est","Paris 10e","est train station"],
+['gare',"Gare Saint-Lazare","Paris 8e","saint lazare train station"],
+['gare',"Gare d'Austerlitz","Paris 13e","austerlitz train station"],
+['gare',"Gare de Massy TGV","Massy 91300","massy tgv train station"],
+['gare',"Gare Marne-la-Vallée – Chessy","Chessy 77700","marne la vallee chessy disney tgv train station"],
+['gare',"Gare de Versailles-Chantiers","Versailles 78000","versailles chantiers train station"],
+['gare',"Gare de Versailles Château – Rive Gauche","Versailles 78000","versailles rive gauche chateau train station rer c"],
+['gare',"Gare de Versailles Rive Droite","Versailles 78000","versailles rive droite train station"],
+['lieu',"Château de Versailles, place d'Armes","Versailles 78000","chateau versailles palace place armes"],
+['lieu',"Domaine de Trianon","Versailles 78000","trianon petit grand marie antoinette hameau"],
+['lieu',"Tour Eiffel","Paris 7e","tour eiffel tower"],
+['lieu',"Avenue des Champs-Élysées","Paris 8e","champs elysees arc triomphe"],
+['lieu',"Musée du Louvre","Paris 1er","louvre museum musee"],
+['lieu',"Disneyland Paris","Chessy 77700","disney disneyland parc park"],
+['lieu',"La Vallée Village","Serris 77700","vallee village outlet shopping"],
+['lieu',"Galeries Lafayette Haussmann","Paris 9e","galeries lafayette shopping haussmann"],
+['lieu',"La Défense","Puteaux 92800","defense business affaires"],
+['hotel',"Four Seasons Hotel George V","31 avenue George V, Paris 8e","george v four seasons palace hotel"],
+['hotel',"Hôtel Plaza Athénée","25 avenue Montaigne, Paris 8e","plaza athenee montaigne palace hotel"],
+['hotel',"The Peninsula Paris","19 avenue Kléber, Paris 16e","peninsula kleber palace hotel"],
+['hotel',"Shangri-La Paris","10 avenue d'Iéna, Paris 16e","shangri la iena palace hotel"],
+['hotel',"Ritz Paris","15 place Vendôme, Paris 1er","ritz vendome palace hotel"],
+['hotel',"Le Bristol Paris","112 rue du Faubourg Saint-Honoré, Paris 8e","bristol faubourg saint honore palace hotel"],
+['hotel',"Mandarin Oriental Paris","251 rue Saint-Honoré, Paris 1er","mandarin oriental saint honore palace hotel"],
+['hotel',"Raffles Le Royal Monceau","37 avenue Hoche, Paris 8e","raffles royal monceau hoche palace hotel"],
+['hotel',"Cheval Blanc Paris","8 quai du Louvre, Paris 1er","cheval blanc samaritaine palace hotel"],
+['hotel',"Waldorf Astoria Versailles – Trianon Palace","1 boulevard de la Reine, Versailles","trianon palace waldorf astoria versailles hotel"],
+['hotel',"Le Grand Contrôle","12 rue de l'Indépendance Américaine, Versailles","grand controle airelles versailles hotel"]];
+var TAGS={air:['Aéroport','Airport','مطار'],gare:['Gare','Station','محطة'],hotel:['Hôtel','Hotel','فندق'],lieu:['Lieu','Place','مكان'],adr:['Adresse','Address','عنوان']};
+function nrm(s){return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9 ]+/g,' ');}
+POI.forEach(function(p){p.push(nrm(p[1]+' '+p[2]+' '+p[3]));});
+var acN=0;
+function autocomplete(input){
+  if(!input) return;
+  input.setAttribute('autocomplete','off');
+  var wrap=input.parentNode; wrap.classList.add('ac');
+  var list=document.createElement('ul'); list.className='ac-list'; list.id='ac-list-'+(++acN); list.setAttribute('role','listbox'); list.hidden=true;
+  wrap.appendChild(list);
+  input.setAttribute('role','combobox'); input.setAttribute('aria-autocomplete','list'); input.setAttribute('aria-expanded','false'); input.setAttribute('aria-controls',list.id);
+  var items=[], cur=-1, timer=null, ctrl=null, seq=0;
+  function close(){list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');cur=-1;}
+  function mark(i){cur=i;[].forEach.call(list.children,function(li,k){li.setAttribute('aria-selected',k===i?'true':'false');});
+    if(i>=0){input.setAttribute('aria-activedescendant',list.children[i].id);list.children[i].scrollIntoView({block:'nearest'});}}
+  function pick(i){var it=items[i]; if(!it) return; input.value=it.v; input.removeAttribute('aria-invalid'); close();}
+  function render(){
+    list.innerHTML='';
+    if(!items.length){close();return;}
+    items.forEach(function(it,k){
+      var li=document.createElement('li'); li.id=list.id+'-'+k; li.setAttribute('role','option');
+      var t=document.createElement('span'); t.className='tag'; t.textContent=TAGS[it.t][IDX[lang]];
+      var l=document.createElement('span'); l.className='lab'; l.textContent=it.a;
+      if(it.b){var sm=document.createElement('small'); sm.textContent=it.b; l.appendChild(sm);}
+      li.appendChild(t); li.appendChild(l);
+      li.addEventListener('mousedown',function(e){e.preventDefault();pick(k);});
+      list.appendChild(li);
+    });
+    list.hidden=false; input.setAttribute('aria-expanded','true'); mark(-1);
+  }
+  function search(){
+    var q=input.value.trim(), nq=nrm(q), toks=nq.split(' ').filter(Boolean), my=++seq;
+    if(toks.length===0){items=[];render();return;}
+    var loc=POI.filter(function(p){return toks.every(function(t){return p[4].indexOf(t)>=0;});}).slice(0,5)
+      .map(function(p){return {t:p[0],a:p[1],b:p[2],v:p[1]+(p[0]==='hotel'?', '+p[2]:'')};});
+    items=loc; render();
+    if(q.length<3) return;
+    if(ctrl){try{ctrl.abort();}catch(e){}}
+    ctrl=('AbortController' in window)?new AbortController():null;
+    var url='https://data.geopf.fr/geocodage/search?q='+encodeURIComponent(q)+'&limit=6&autocomplete=1&lat=48.8049&lon=2.1204';
+    try{
+      fetch(url,ctrl?{signal:ctrl.signal}:{}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+        if(!d||my!==seq) return;
+        var seen={}; loc.forEach(function(x){seen[nrm(x.v)]=1;});
+        var adr=(d.features||[]).map(function(f){var p=f.properties||{};return {t:'adr',a:p.label||p.name||'',b:'',v:p.label||p.name||''};})
+          .filter(function(x){if(!x.v||seen[nrm(x.v)]) return false; seen[nrm(x.v)]=1; return true;});
+        items=loc.concat(adr).slice(0,8); render();
+      }).catch(function(){});
+    }catch(e){}
+  }
+  input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(search,180);});
+  input.addEventListener('focus',function(){if(input.value.trim())search();});
+  input.addEventListener('blur',function(){setTimeout(close,120);});
+  input.addEventListener('keydown',function(e){
+    if(list.hidden) return;
+    var n=list.children.length;
+    if(e.key==='ArrowDown'){e.preventDefault();mark((cur+1)%n);}
+    else if(e.key==='ArrowUp'){e.preventDefault();mark((cur-1+n)%n);}
+    else if(e.key==='Enter'&&cur>=0){e.preventDefault();pick(cur);}
+    else if(e.key==='Escape'){close();}
+  });
+}
+['qb-dep','qb-arr','depart','arrivee'].forEach(function(id){autocomplete(document.getElementById(id));});
 document.getElementById('copy').addEventListener('click',function(){
   var b=this;
   function sel(){var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);}
