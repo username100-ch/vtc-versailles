@@ -24,7 +24,7 @@ def head_tags(l):
     alts=''.join(f'<link rel="alternate" hreflang="{k}" href="{URL[k]}">\n' for k in ('fr','en','ar'))
     alts+=f'<link rel="alternate" hreflang="x-default" href="{URL["en"]}">\n'
     ld={"@context":"https://schema.org","@type":"LocalBusiness","@id":BASE+"#business",
-        "name":"Carrosse VTC","url":URL[l],"image":BASE+"images/hero-galerie-des-glaces.jpg",
+        "name":"Carrosse VTC","url":URL[l],"image":BASE+"images/hero-cour-de-marbre.jpg",
         "description":m['desc'],"telephone":"+33600000000","priceRange":"€€",
         "address":{"@type":"PostalAddress","addressLocality":"Versailles","postalCode":"78000","addressRegion":"Île-de-France","addressCountry":"FR"},
         "areaServed":[{"@type":"AdministrativeArea","name":"Île-de-France"},{"@type":"City","name":"Paris"},{"@type":"City","name":"Versailles"}],
@@ -35,7 +35,7 @@ def head_tags(l):
             f'<link rel="canonical" href="{URL[l]}">\n'+alts+
             f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Carrosse VTC">\n'
             f'<meta property="og:title" content="{html.escape(m["title"])}">\n<meta property="og:description" content="{html.escape(m["desc"])}">\n'
-            f'<meta property="og:url" content="{URL[l]}">\n<meta property="og:image" content="{BASE}images/hero-galerie-des-glaces.jpg">\n<meta property="og:locale" content="{m["og"]}">\n'
+            f'<meta property="og:url" content="{URL[l]}">\n<meta property="og:image" content="{BASE}images/hero-cour-de-marbre.jpg">\n<meta property="og:locale" content="{m["og"]}">\n'
             f'<meta name="twitter:card" content="summary_large_image">\n'
             f'<script type="application/ld+json">{json.dumps(ld,ensure_ascii=False)}</script>\n')
 def render(l):
