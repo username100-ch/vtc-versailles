@@ -1,10 +1,24 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr" data-lang="fr" data-page-lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Chauffeur VTC à Versailles, disponible dans toute l'Île-de-France 7j/7 : aéroports Orly et Roissy, Disneyland, Tour Eiffel, gares, visites du Château. Prix fixe. Site en français, anglais et arabe.">
-<title>Carrosse VTC Versailles</title>
+<title>Chauffeur VTC à Versailles et Paris | Carrosse VTC</title>
+<meta name="description" content="Chauffeur privé VTC à Versailles, disponible dans toute l&#x27;Île-de-France 24h/24 : aéroports Roissy-CDG, Orly et Le Bourget, Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.">
+<link rel="canonical" href="https://username100-ch.github.io/vtc-versailles/">
+<link rel="alternate" hreflang="fr" href="https://username100-ch.github.io/vtc-versailles/">
+<link rel="alternate" hreflang="en" href="https://username100-ch.github.io/vtc-versailles/en/">
+<link rel="alternate" hreflang="ar" href="https://username100-ch.github.io/vtc-versailles/ar/">
+<link rel="alternate" hreflang="x-default" href="https://username100-ch.github.io/vtc-versailles/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carrosse VTC">
+<meta property="og:title" content="Chauffeur VTC à Versailles et Paris | Carrosse VTC">
+<meta property="og:description" content="Chauffeur privé VTC à Versailles, disponible dans toute l&#x27;Île-de-France 24h/24 : aéroports Roissy-CDG, Orly et Le Bourget, Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.">
+<meta property="og:url" content="https://username100-ch.github.io/vtc-versailles/">
+<meta property="og:image" content="https://username100-ch.github.io/vtc-versailles/images/hero-corolla-versailles.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://username100-ch.github.io/vtc-versailles/#business", "name": "Carrosse VTC", "url": "https://username100-ch.github.io/vtc-versailles/", "image": "https://username100-ch.github.io/vtc-versailles/images/hero-corolla-versailles.jpg", "description": "Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG, Orly et Le Bourget, Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.", "telephone": "+33600000000", "priceRange": "€€", "address": {"@type": "PostalAddress", "addressLocality": "Versailles", "postalCode": "78000", "addressRegion": "Île-de-France", "addressCountry": "FR"}, "areaServed": [{"@type": "AdministrativeArea", "name": "Île-de-France"}, {"@type": "City", "name": "Paris"}, {"@type": "City", "name": "Versailles"}], "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}, "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Airport transfer CDG Orly Le Bourget"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Paris chauffeur service"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Disneyland Paris transfer"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Versailles Palace tour"}}]}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +47,9 @@
 :root[data-lang="ar"] .hero h1{line-height:1.5}
 
 *{box-sizing:border-box}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{background:var(--stone);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6}
@@ -103,6 +120,16 @@ bdi{unicode-bidi:isolate}
 .times-band{background:var(--roi-deep);color:var(--on-roi);padding-block:22px 26px;border-bottom:1px solid rgba(231,207,143,.25)}
 .times-band .times{margin-top:0}
 @media (max-width:820px){.hero{min-height:560px}.hero-photo{background-position:55% 100%}.hero-inner{padding-block:120px 40px}}
+
+/* bouton WhatsApp flottant */
+.wa-float{position:fixed;z-index:6;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px;background:#1f9d55;color:#fff;text-decoration:none;font:600 .92rem var(--f-body);padding:11px 16px 11px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.wa-float svg{width:24px;height:24px}
+.wa-float:hover{background:#178a49}
+:root[dir="rtl"] .wa-float{right:auto;left:calc(16px + env(safe-area-inset-left,0px))}
+@media (max-width:480px){.wa-float span{display:none}.wa-float{padding:12px}}
+.lang a{font:600 .76rem "Figtree",system-ui,sans-serif;letter-spacing:.06em;color:var(--on-roi);text-decoration:none;padding:7px 8px;min-width:34px;text-align:center}
+.lang a[data-l="ar"]{font-family:"Noto Sans Arabic",system-ui,sans-serif;font-size:.8rem;padding-block:4px}
+.lang a[aria-current="page"]{background:var(--or-soft);color:#141a33}
 
 /* sections */
 section.block{padding-block:80px}
@@ -283,14 +310,15 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
       <li><a href="#services" data-t="n1">Services</a></li>
       <li><a href="#vehicule" data-t="n2">Véhicule</a></li>
       <li><a href="#tarifs" data-t="n3">Tarifs</a></li>
+      <li><a href="#international" data-t="n6">International</a></li>
       <li><a href="#zone" data-t="n4">Zone</a></li>
       <li><a href="#faq" data-t="n5">Questions</a></li>
     </ul>
     <div class="right">
       <div class="lang" role="group" aria-label="Langue · Language · اللغة">
-        <button type="button" data-l="fr" aria-pressed="true" lang="fr">FR</button>
-        <button type="button" data-l="en" aria-pressed="false" lang="en">EN</button>
-        <button type="button" data-l="ar" aria-pressed="false" lang="ar">عربي</button>
+        <a href="./" data-l="fr" lang="fr" hreflang="fr" aria-current="page">FR</a>
+        <a href="en/" data-l="en" lang="en" hreflang="en">EN</a>
+        <a href="ar/" data-l="ar" lang="ar" hreflang="ar">عربي</a>
       </div>
       <a class="btn" href="#reserver" data-t="book">Réserver</a>
     </div>
@@ -332,7 +360,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
       <article class="svc photo">
         <img src="images/aeroport.jpg" alt="Avion au décollage" width="900" height="506" loading="lazy" style="object-position:50% 50%">
         <h3 data-t="sv1">Aéroports</h3>
-        <p data-t="sv1p">Orly, Roissy-Charles-de-Gaulle, Beauvais. Suivi de votre vol et accueil avec pancarte au terminal.</p>
+        <p data-t="sv1p">Orly, Roissy-Charles-de-Gaulle, Le Bourget, Beauvais. Suivi de votre vol et accueil avec pancarte au terminal.</p>
       </article>
       <article class="svc photo">
         <img src="images/cour-de-marbre.jpg" alt="La cour de Marbre du château de Versailles" width="720" height="960" loading="lazy" style="object-position:50% 45%">
@@ -382,6 +410,22 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
       <figure class="wide"><img src="images/jardins-orangerie.jpg" alt="Les jardins de Versailles et l'Orangerie" width="1074" height="806" loading="lazy"><figcaption data-t="ch-c3">Les jardins et l'Orangerie</figcaption></figure>
     </div>
     <figure><img src="images/galerie-des-batailles.jpg" alt="La galerie des Batailles du château de Versailles" width="720" height="1082" loading="lazy"><figcaption data-t="ch-c2">La galerie des Batailles</figcaption></figure>
+  </div>
+</section>
+
+<section class="block" id="international">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" data-t="in-eye">Clientèle internationale</p>
+      <h2 data-t="in-h">Votre chauffeur privé pendant tout votre séjour à Paris</h2>
+      <p data-t="in-p">Arrivée en jet privé au Bourget ou en vol régulier à Roissy, séjour en famille, shopping ou rendez-vous d'affaires : je m'adapte à votre programme, de jour comme de nuit.</p>
+    </div>
+    <div class="why">
+      <div><b data-t="in1">Accueil à l'aéroport</b><p data-t="in1p">Roissy-CDG, Orly et Le Bourget (aviation d'affaires) : suivi de votre vol, accueil avec pancarte à votre nom et aide aux bagages.</p></div>
+      <div><b data-t="in2">Shopping à Paris</b><p data-t="in2p">Champs-Élysées, avenue Montaigne, Galeries Lafayette, La Vallée Village : je vous dépose et je vous attends pendant vos achats.</p></div>
+      <div><b data-t="in3">Familles</b><p data-t="in3p">Sièges enfants sur demande, discrétion et respect de votre vie privée, pour voyager sereinement avec vos proches.</p></div>
+      <div><b data-t="in4">Réservation par WhatsApp</b><p data-t="in4p">Envoyez votre programme sur WhatsApp, je vous confirme le prix rapidement. Possible à la journée, pendant tout votre séjour.</p></div>
+    </div>
   </div>
 </section>
 
@@ -545,11 +589,16 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   </div>
 </footer>
 
+<a class="wa-float" id="wa-float" href="https://wa.me/33600000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.3 28.8l6.6-1.7A12.7 12.7 0 1 0 16 3.2Zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.5 10.5 0 1 1 16 26.4Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2.1.9 2.9 1 3.9.8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.1-.3-.2-.6-.4Z"/></svg>
+  <span data-t="wa">WhatsApp</span>
+</a>
+
 <script>
 (function(){
 var T={
 tag:["Private driver · Versailles & Paris","سائق خاص · فرساي وإيل دو فرانس"],
-n1:["Services","الخدمات"],n2:["The car","السيارة"],n3:["Fares","الأسعار"],n4:["Area","المنطقة"],n5:["FAQ","الأسئلة"],book:["Book","احجز"],
+n1:["Services","الخدمات"],n2:["The car","السيارة"],n3:["Fares","الأسعار"],n4:["Area","المنطقة"],n6:["International","ضيوفنا الدوليون"],n5:["FAQ","الأسئلة"],book:["Book","احجز"],
 "h-eye":["Private driver · All of Greater Paris · 24/7","سائق خاص · جميع أنحاء إيل دو فرانس · على مدار الساعة"],
 h1:["Your private driver from Versailles","سائقكم الخاص انطلاقاً من فرساي"],
 h1b:["from the Palace gates to your terminal","من بوابة القصر إلى صالة المطار"],
@@ -563,7 +612,7 @@ tcap:["Average travel times from Versailles, outside rush hour.","متوسط م�
 ribbon:["Available across the whole Paris region","متوفر في جميع أنحاء إيل دو فرانس"],
 "s-h":["A ride for every occasion","رحلة لكل مناسبة"],
 "s-p":["Local resident, visitor from abroad or business hosting guests: I take care of the journey, wherever you are going in the Paris region.","سواء كنتم من سكان المنطقة أو زواراً من الخارج أو شركة تستقبل ضيوفها، أتولى رحلتكم أينما كانت وجهتكم في إيل دو فرانس."],
-sv1:["Airports","المطارات"],sv1p:["Orly, Charles de Gaulle, Beauvais. Flight tracking and a name sign waiting for you at arrivals.","أورلي، شارل ديغول، بوفيه. متابعة رحلتكم الجوية واستقبالكم بلافتة باسمكم في صالة الوصول."],
+sv1:["Airports","المطارات"],sv1p:["Orly, Charles de Gaulle, Le Bourget, Beauvais. Flight tracking and a name sign waiting for you at arrivals.","أورلي، شارل ديغول، لو بورجيه، بوفيه. متابعة رحلتكم الجوية واستقبالكم بلافتة باسمكم في صالة الوصول."],
 sv2:["Train stations","محطات القطار"],sv2p:["Montparnasse, Gare de Lyon, Gare du Nord (Eurostar), Massy TGV. Help with your luggage included.","مونبارناس، غار دو ليون، غار دو نور (يوروستار)، ماسي TGV. المساعدة في حمل الأمتعة مشمولة."],
 sv3:["Palace of Versailles","قصر فرساي"],sv3p:["Drop-off at the Palace gates, waiting during your visit, then the Trianons and gardens.","إنزالكم عند بوابة القصر، والانتظار أثناء الزيارة، ثم قصور التريانون والحدائق."],
 sv7:["Paris & Eiffel Tower","باريس وبرج إيفل"],sv7p:["Eiffel Tower, Champs-Élysées, the Louvre, a Seine cruise: I drop you in the heart of Paris and pick you up again.","برج إيفل، الشانزليزيه، اللوفر، رحلة نهرية على نهر السين: أوصلكم إلى قلب باريس وأعود لاصطحابكم."],
@@ -573,6 +622,18 @@ sv6:["Hourly hire","سائق بالساعة"],sv6p:["A driver for a few hours or
 "ch-eye":["Palace visits","زيارات القصر"],"ch-h":["Versailles, just minutes away","قصر فرساي على بُعد دقائق"],
 "ch-p":["I drop you as close as possible to the Palace entrance, wait during your visit, then take you on to the Trianons, the gardens or Paris.","أوصلكم إلى أقرب نقطة من مدخل القصر، وأنتظركم أثناء الزيارة، ثم أرافقكم إلى قصور التريانون أو الحدائق أو باريس."],
 "ch-c1":["The Marble Courtyard","ساحة الرخام"],"ch-c3":["The gardens and the Orangery","الحدائق والأورانجري"],"ch-c2":["The Gallery of Battles","قاعة المعارك"],
+"in-eye":["International guests","ضيوفنا من دول الخليج والعالم"],
+"in-h":["Your private driver for your whole stay in Paris","سائقكم الخاص طوال إقامتكم في باريس"],
+"in-p":["Arriving by private jet at Le Bourget or on a scheduled flight at Charles de Gaulle, travelling with family, shopping or meeting clients: I adapt to your schedule, day and night.","سواء وصلتم بطائرة خاصة إلى مطار لو بورجيه أو برحلة منتظمة إلى مطار شارل ديغول، مع العائلة أو للتسوق أو لمواعيد العمل، أتكيّف مع برنامجكم ليلاً ونهاراً."],
+in1:["Airport meet & greet","الاستقبال في المطار"],
+in1p:["Charles de Gaulle, Orly and Le Bourget (private aviation): flight tracking, a name sign at arrivals and help with your luggage.","مطار شارل ديغول وأورلي ولو بورجيه (الطيران الخاص): متابعة رحلتكم، استقبال بلافتة تحمل اسمكم والمساعدة في حمل الأمتعة."],
+in2:["Shopping in Paris","التسوق في باريس"],
+in2p:["Champs-Élysées, Avenue Montaigne, Galeries Lafayette, La Vallée Village: I drop you off and wait while you shop.","الشانزليزيه، جادة مونتين، غاليري لافاييت، لا فاليه فيلاج: أوصلكم وأنتظركم أثناء التسوق."],
+in3:["Families","العائلات"],
+in3p:["Child seats on request, discretion and respect for your privacy, so you can travel with your loved ones in peace.","مقاعد للأطفال عند الطلب، مع التحفظ واحترام خصوصيتكم، لتسافروا مع عائلتكم براحة تامة."],
+in4:["Book on WhatsApp","الحجز عبر واتساب"],
+in4p:["Send me your schedule on WhatsApp and I'll confirm the price quickly. Full-day hire available for your whole stay.","أرسلوا برنامجكم عبر واتساب وسأؤكد لكم السعر بسرعة. إمكانية حجز سائق ليوم كامل طوال إقامتكم."],
+wa:["WhatsApp","واتساب"],
 "v-type":["Hybrid estate car","سيارة ستيشن هجينة"],"v-cap":["passengers max. · 3 medium suitcases","ركاب كحد أقصى · 3 حقائب متوسطة"],
 "v-eye":["Your car","سيارتكم"],
 "v-h":["I pick you up in a Toyota Corolla Touring Sports","آتي لاصطحابكم بسيارة تويوتا كورولا تورينغ سبورتس"],
@@ -617,21 +678,24 @@ depart:["Ex. : place d'Armes, Versailles","e.g. your hotel, Versailles","مثا�
 arrivee:["Ex. : aéroport d'Orly, terminal 1","e.g. Charles de Gaulle, Terminal 2E","مثال: مطار شارل ديغول، المبنى 2E"],
 msg:["Ex. : vol AF 1234","e.g. flight BA 304","مثال: رحلة رقم AF 1234"]};
 var IDX={fr:0,en:1,ar:2}, root=document.documentElement, lang='fr';
+var PAGE=root.getAttribute('data-page-lang');
+var WA={fr:'Bonjour, je souhaite réserver un chauffeur.',en:'Hello, I would like to book a driver.',ar:'مرحباً، أود حجز سائق خاص.'};
 var nodes=[].slice.call(document.querySelectorAll('[data-t]'));
 nodes.forEach(function(el){el._fr=el.innerHTML;});
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 function setLang(l){
   if(!IDX.hasOwnProperty(l)) l='fr';
   lang=l; root.setAttribute('data-lang',l); root.setAttribute('lang',l); root.setAttribute('dir',l==='ar'?'rtl':'ltr');
-  nodes.forEach(function(el){var k=el.getAttribute('data-t');el.innerHTML=(l==='fr'||!T[k])?el._fr:esc(T[k][IDX[l]-1]);});
+  if(!PAGE) nodes.forEach(function(el){var k=el.getAttribute('data-t');el.innerHTML=(l==='fr'||!T[k])?el._fr:esc(T[k][IDX[l]-1]);});
+  var wa=document.getElementById('wa-float'); if(wa) wa.href='https://wa.me/33600000000?text='+encodeURIComponent(WA[l]);
   Object.keys(PH).forEach(function(id){var el=document.getElementById(id);if(el)el.placeholder=PH[id][IDX[l]];});
   [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-l')===l);});
-  try{localStorage.setItem('carrosse-lang',l);}catch(e){}
+  if(!PAGE){try{localStorage.setItem('carrosse-lang',l);}catch(e){}}
   if(!document.getElementById('recap').hidden) build();
 }
 var saved=null; try{saved=localStorage.getItem('carrosse-lang');}catch(e){}
 var nav=(navigator.language||'fr').toLowerCase();
-setLang(saved || (nav.indexOf('fr')===0?'fr':nav.indexOf('ar')===0?'ar':'en'));
+setLang(PAGE || saved || (nav.indexOf('fr')===0?'fr':nav.indexOf('ar')===0?'ar':'en'));
 [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
 
 var form=document.getElementById('form-resa'),recap=document.getElementById('recap'),out=document.getElementById('recap-text');

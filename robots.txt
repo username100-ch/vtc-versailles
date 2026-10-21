@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://username100-ch.github.io/vtc-versailles/sitemap.xml
