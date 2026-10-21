@@ -105,7 +105,8 @@ section.block{padding-block:80px}
 /* véhicule */
 .vehicule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
 .car-card{background:var(--paper);border:1px solid var(--line);padding:28px;display:grid;gap:18px}
-.car-card svg{width:100%;height:auto;max-width:100%}
+.car-photo{background:#f0f0f0;margin:-28px -28px 0;padding:8px 0}
+.car-photo img{display:block;width:100%;height:auto;max-width:100%}
 .car-card .model{font-family:"Cinzel",Georgia,serif;font-size:1.1rem;letter-spacing:.06em}
 .car-card .model small{display:block;font-family:var(--f-body);font-size:.85rem;letter-spacing:0;color:var(--muted)}
 .cap{display:flex;align-items:center;gap:16px;background:var(--roi);color:var(--on-roi);padding:16px 20px}
@@ -336,56 +337,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
 <section class="block" id="vehicule" style="background:var(--paper)">
   <div class="wrap vehicule">
     <div class="car-card" style="background:var(--stone)">
-      <svg viewBox="0 0 360 126" role="img" aria-label="Toyota Corolla Touring Sports noire">
-<defs>
-<linearGradient id="ct-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4f5a"/><stop offset=".22" stop-color="#1b1d22"/><stop offset=".6" stop-color="#0c0d10"/><stop offset="1" stop-color="#050506"/></linearGradient>
-<linearGradient id="ct-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8c9bb0"/><stop offset=".45" stop-color="#2c3340"/><stop offset="1" stop-color="#14171d"/></linearGradient>
-<linearGradient id="ct-rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3c7ce"/><stop offset="1" stop-color="#6b7079"/></linearGradient>
-</defs>
-<ellipse cx="180" cy="113" rx="170" ry="5" fill="#000" opacity=".22"/>
-<!-- carrosserie -->
-<path d="M20 103 Q15 100 15 93 L14 82 Q14 74 19 68 L24 60 Q30 57 46 54 L118 45.5 Q134 40 150 30 Q164 20 178 16.5 Q186 15 200 15 L282 14.6 Q296 14.8 304 17 L318 21.5 Q323 23.5 322 27 L328 36 Q336 41 340 48 Q344 56 344 66 L344 92 Q344 101 336 103 L296 103 A26 26 0 0 0 248 103 L107 103 A26 26 0 0 0 59 103 Z" fill="url(#ct-body)"/>
-<!-- vitrages (A, portes, custode effilée) -->
-<path d="M126 47 Q140 40 152 31 Q165 22 178 20 Q186 19 200 19 L280 19 Q294 19.4 302 21.8 L314 26 Q318 28 316 31 L312 37 Q240 41 126 47 Z" fill="url(#ct-glass)"/>
-<path d="M203 19 L201 45 M262 19 L265 41.5" stroke="#08090b" stroke-width="5"/>
-<path d="M268 20 L300 21.5 L311 26.5 L309 34" stroke="#08090b" stroke-width="1.2" fill="none" opacity=".6"/>
-<path d="M126 47.4 Q240 41.4 313 37.4" stroke="#9aa0aa" stroke-width="1.2" fill="none"/>
-<!-- barres de toit -->
-<path d="M188 14.2 L290 13.8" stroke="#2a2d33" stroke-width="2.6" stroke-linecap="round"/>
-<path d="M190 13.2 L288 12.8" stroke="#8a909a" stroke-width=".8" stroke-linecap="round" opacity=".7"/>
-<!-- reflet longitudinal et nervure -->
-<path d="M30 60 Q170 50 336 47" stroke="#6d7380" stroke-width="1.4" fill="none" opacity=".75"/>
-<path d="M112 80 Q220 72 340 64" stroke="#3a3e46" stroke-width="1.2" fill="none" opacity=".9"/>
-<path d="M60 96 Q60 98 64 98 M110 98 L246 98" stroke="#2a2d33" stroke-width="1.6" fill="none"/>
-<!-- portes -->
-<path d="M132 48 Q128 75 136 101 M201 45 Q200 75 204 101 M262 42 Q268 70 248 101" stroke="#000" stroke-width=".9" fill="none" opacity=".75"/>
-<path d="M182 61 h12 M244 59 h11" stroke="#7d838e" stroke-width="2" stroke-linecap="round"/>
-<!-- rétroviseur -->
-<path d="M128 47 L118 46 Q112 46 112 51 Q112 55 118 55 L130 54 Z" fill="#0b0c0e" stroke="#4a4f5a" stroke-width=".6"/>
-<!-- optiques avant effilées -->
-<path d="M18 66 L26 60 Q40 56.5 58 55.5 L54 60 Q38 62.5 22 68 Z" fill="#d9dde3"/>
-<path d="M28 62.5 Q42 59.5 54 58.6" stroke="#ffffff" stroke-width="1" fill="none"/>
-<!-- calandre et bouclier avant -->
-<path d="M15 80 Q22 77 34 78 L36 92 Q24 94 16 92 Z" fill="#050506" stroke="#3a3e46" stroke-width=".7"/>
-<path d="M18 84 h15 M18 88 h16" stroke="#2a2d33" stroke-width=".8"/>
-<path d="M14 72 Q30 70 46 70" stroke="#3a3e46" stroke-width="1" fill="none"/>
-<!-- feux arrière enveloppants -->
-<path d="M318 50 Q332 46.5 343 49 L343.6 58 Q330 59 316 58.5 Z" fill="#b5121b"/>
-<path d="M320 52.5 Q332 50.5 342 52" stroke="#ff5a4d" stroke-width="1.1" fill="none"/>
-<!-- becquet -->
-<path d="M304 17 L322 22 L323 25.5" stroke="#08090b" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-<!-- roues -->
-<g>
-<circle cx="83" cy="90" r="21.5" fill="#0a0a0b"/><circle cx="83" cy="90" r="14.5" fill="url(#ct-rim)"/>
-<circle cx="272" cy="90" r="21.5" fill="#0a0a0b"/><circle cx="272" cy="90" r="14.5" fill="url(#ct-rim)"/>
-</g>
-<g stroke="#2a2d33" stroke-width="2.2" stroke-linecap="round">
-<path d="M83 77.5v25M70.5 90h25M74.2 81.2l17.6 17.6M91.8 81.2l-17.6 17.6"/>
-<path d="M272 77.5v25M259.5 90h25M263.2 81.2l17.6 17.6M280.8 81.2l-17.6 17.6"/>
-</g>
-<circle cx="83" cy="90" r="4" fill="#1a1b1f" stroke="#c3c7ce" stroke-width=".8"/><circle cx="272" cy="90" r="4" fill="#1a1b1f" stroke="#c3c7ce" stroke-width=".8"/>
-<path d="M57 103 A26 26 0 0 1 109 103 M246 103 A26 26 0 0 1 298 103" stroke="#08090b" stroke-width="3" fill="none"/>
-</svg>
+      <div class="car-photo"><img src="images/corolla.jpg" alt="Toyota Corolla Touring Sports noire" width="1100" height="538" loading="lazy"></div>
       <p class="model">Toyota Corolla Touring Sports<small data-t="v-type">Break hybride</small></p>
       <div class="cap"><b>4</b><span data-t="v-cap">passagers maximum</span><span class="seats" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
     </div>
