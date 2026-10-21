@@ -195,6 +195,9 @@ th{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or
 th.r,td.prix{text-align:end}
 td.prix{font-family:"Cinzel",Georgia,serif;font-size:1.15rem;color:var(--or-soft);white-space:nowrap}
 tr.min td{border-bottom-color:rgba(231,207,143,.5)}
+.route{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.route .arr{width:34px;height:12px;flex:none;color:var(--or-soft)}
+:root[dir="rtl"] .route .arr{transform:scaleX(-1)}
 td small{display:block;color:rgba(245,241,228,.6);font-size:.82rem}
 .note{font-size:.85rem;color:rgba(245,241,228,.65);margin-top:14px}
 .inclus{border:1px solid rgba(231,207,143,.35);padding:26px;display:grid;gap:14px}
@@ -334,7 +337,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   <div class="hero-photo" role="img" aria-label="Toyota Corolla Touring Sports noire devant la grille royale du château de Versailles"></div>
   <div class="wrap hero-inner">
     <h1><span data-t="h1a"></span><span class="gold" data-t="h1g">سائقكم الخاص</span><br><span data-t="h1c">في فرساي</span></h1>
-    <p class="sub" data-t="sub">خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة.</p>
+    <p class="sub" data-t="sub">خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة · رحلات ابتداءً من 20 €.</p>
     <div class="ctas">
       <a class="btn" href="#reserver" data-t="cta">اطلبوا رحلة</a>
       <a class="btn ghost" href="tel:+33600000000"><bdi dir="ltr">06 00 00 00 00</bdi></a>
@@ -463,7 +466,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
     <div class="head">
       <p class="eyebrow" data-t="n3">الأسعار</p>
       <h2 data-t="f-h">السعر محدد قبل الانطلاق</h2>
-      <p data-t="f-p">انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام.</p>
+      <p data-t="f-p">الحد الأدنى لسعر الرحلة لدينا هو 20 €. انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام.</p>
     </div>
     <div class="tarifs">
       <div>
@@ -471,7 +474,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
           <table>
             <thead><tr><th data-t="f-dest">الوجهة</th><th class="r" data-t="f-from">ابتداءً من</th></tr></thead>
             <tbody>
-              <tr class="min"><td><span data-t="r0">رحلة داخل فرساي</span><small data-t="r0s">الحد الأدنى لسعر الرحلة</small></td><td class="prix"><bdi>20 €</bdi></td></tr>
+              <tr class="min"><td><span class="route"><span data-t="city">فرساي</span><svg class="arr" viewBox="0 0 34 12" aria-hidden="true"><path d="M1 6h29M24 1.5 31 6l-7 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="city">فرساي</span></span><small data-t="r0s">الحد الأدنى لسعر الرحلة</small></td><td class="prix"><bdi>20 €</bdi></td></tr>
               <tr><td><span data-t="r1">مطار أورلي</span><small data-t="t1v">~ 30 دقيقة</small></td><td class="prix"><bdi>55 €</bdi></td></tr>
               <tr><td><span data-t="r2">برج إيفل</span><small data-t="t2v">~ 35 دقيقة</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
               <tr><td><span data-t="r3">وسط باريس</span><small data-t="t2v">~ 35 دقيقة</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
@@ -540,7 +543,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
     <div class="head">
       <p class="eyebrow" data-t="b-eye">الحجز</p>
       <h2 data-t="b-h">اطلبوا رحلتكم</h2>
-      <p data-t="b-p">املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة.</p>
+      <p data-t="b-p">املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة. الحد الأدنى لسعر الرحلة: 20 €.</p>
     </div>
     <div class="resa">
       <div class="contact-card">
@@ -614,7 +617,7 @@ h1b:["from the Palace gates to your terminal","من بوابة القصر إلى
 lead:["Based in Versailles, I drive you anywhere in the Paris region: airports, train stations, central Paris, Disneyland and Palace visits. Fixed price when you book, an on-time driver and a spotless car.","مقيم في فرساي، أوصلكم إلى أي مكان في إيل دو فرانس: المطارات، محطات القطار، وسط باريس، ديزني لاند وزيارات القصر. سعر ثابت عند الحجز، سائق دقيق في مواعيده وسيارة نظيفة."],
 cta:["Request a ride","اطلبوا رحلة"],
 h1a:["Your ",""],h1g:["private driver","سائقكم الخاص"],h1c:["in Versailles","في فرساي"],
-sub:["Private hire service · Versailles and the whole Paris region, 24/7.","خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة."],
+sub:["Private hire service · Versailles and the whole Paris region, 24/7 · Rides from €20.","خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة · رحلات ابتداءً من 20 €."],
 t1:["Orly Airport","مطار أورلي"],t2:["Eiffel Tower","برج إيفل"],t3:["Charles de Gaulle","مطار شارل ديغول"],t4:["Disneyland","ديزني لاند"],
 t1v:["~ 30 min","~ 30 دقيقة"],t2v:["~ 35 min","~ 35 دقيقة"],t3v:["~ 55 min","~ 55 دقيقة"],t4v:["~ 1 h","~ ساعة واحدة"],t5v:["~ 1 h 20","~ ساعة و20 دقيقة"],
 tcap:["Average travel times from Versailles, outside rush hour.","متوسط مدة الرحلة من فرساي، خارج أوقات الذروة."],
@@ -657,9 +660,9 @@ v5:["Eco-friendly: low fuel consumption and reduced CO₂ emissions","صديقة
 v4:["Child and booster seats on request","مقاعد ومعززات للأطفال عند الطلب"],
 "v-aside":["More than 4 of you? Get in touch and I'll help you find a suitable option.","أكثر من 4 أشخاص؟ تواصلوا معي وسأساعدكم في إيجاد حل مناسب."],
 "f-h":["Your price is fixed before we leave","السعر محدد قبل الانطلاق"],
-"f-p":["From Versailles, up to 4 passengers and 3 medium suitcases. No extra charge for traffic jams.","انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام."],
+"f-p":["Our minimum fare is €20 per ride. From Versailles, up to 4 passengers and 3 medium suitcases. No extra charge for traffic jams.","الحد الأدنى لسعر الرحلة لدينا هو 20 €. انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام."],
 "f-dest":["Destination","الوجهة"],"f-from":["From","ابتداءً من"],
-r0:["Ride within Versailles","رحلة داخل فرساي"],r0s:["Minimum fare per ride","الحد الأدنى لسعر الرحلة"],"f-min":["Minimum fare: €20, whatever the distance.","الحد الأدنى لسعر الرحلة: 20 €، مهما كانت المسافة."],
+city:["Versailles","فرساي"],r0s:["Minimum fare per ride","الحد الأدنى لسعر الرحلة"],"f-min":["Minimum fare: €20, whatever the distance.","الحد الأدنى لسعر الرحلة: 20 €، مهما كانت المسافة."],
 r1:["Orly Airport","مطار أورلي"],r2:["Eiffel Tower","برج إيفل"],r3:["Central Paris","وسط باريس"],r4:["Montparnasse station","محطة مونبارناس"],r5:["Charles de Gaulle Airport","مطار شارل ديغول"],r6:["Disneyland Paris","ديزني لاند باريس"],r7:["Beauvais Airport","مطار بوفيه"],r8:["Hourly hire","سائق بالساعة"],r8s:["2 hours minimum","ساعتان كحد أدنى"],r8p:["€55/h","55 € / ساعة"],
 "f-note":["Sample fares, to be replaced.","أسعار على سبيل المثال، سيتم تحديثها."],
 "i-h":["ALWAYS INCLUDED","مشمول دائماً"],i1:["60 min free waiting at the airport","انتظار مجاني لمدة 60 دقيقة في المطار"],i2:["Water bottles and phone chargers","زجاجات مياه وشواحن للهاتف"],i3:["Child seat on request","مقعد للأطفال عند الطلب"],i4:["Card payment on board","الدفع بالبطاقة داخل السيارة"],i5:["Receipt sent by email","إرسال الفاتورة عبر البريد الإلكتروني"],
@@ -672,7 +675,7 @@ w4:["Discretion","الاحترافية والتحفظ"],w4p:["Licensed professio
 "z-big":["All 8 départements, day and night.","المقاطعات الثماني، ليلاً ونهاراً."],
 "z-p":["I pick you up anywhere in the Paris region, and longer trips are available on quote: Chartres, Reims, Normandy…","آتي لاصطحابكم أينما كنتم في إيل دو فرانس، ويمكن تنظيم رحلات أبعد بعرض سعر: شارتر، ريمس، نورماندي…"],
 "b-eye":["Booking","الحجز"],"b-h":["Request your ride","اطلبوا رحلتكم"],
-"b-p":["Fill in the form and I'll confirm the price by text or phone, usually within 30 minutes.","املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة."],
+"b-p":["Fill in the form and I'll confirm the price by text or phone, usually within 30 minutes. Minimum fare: €20 per ride.","املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة. الحد الأدنى لسعر الرحلة: 20 €."],
 c1:["Phone & WhatsApp","الهاتف وواتساب"],c2:["Email","البريد الإلكتروني"],c3:["Availability","التوفر"],c3v:["24/7","على مدار الساعة، طوال الأسبوع"],c4:["Car","السيارة"],c4v:["Toyota Corolla Touring Sports hybrid · up to 4 passengers and 3 medium suitcases","تويوتا كورولا تورينغ سبورتس هجينة · 4 ركاب و3 حقائب متوسطة كحد أقصى"],
 c5:["For a pickup within the next 2 hours, please call.","للانطلاق خلال أقل من ساعتين، يرجى الاتصال مباشرة."],
 "l-nom":["Name","الاسم"],"l-tel":["Phone","الهاتف"],"l-date":["Date","التاريخ"],"l-heure":["Pickup time","وقت الانطلاق"],"l-dep":["Pickup address","عنوان الانطلاق"],"l-arr":["Destination","الوجهة"],"l-pax":["Passengers (4 max.)","عدد الركاب (4 كحد أقصى)"],"l-bag":["Suitcases (3 medium max.)","الحقائب (3 متوسطة كحد أقصى)"],"l-msg":["Details (flight number, child seat…)","تفاصيل (رقم الرحلة، مقعد طفل…)"],"l-send":["Prepare my request","تجهيز طلبي"],
