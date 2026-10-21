@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Chauffeur VTC à Versailles 7j/7 : transferts aéroports Orly et Roissy, gares, visites du Château, déplacements professionnels. Prix fixe à la réservation.">
+<title>Carrosse VTC Versailles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant:ital,wght@1,500;1,600&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout : une page en défilement, axe central comme la grande perspective du parc, bandes bleu roi alternées avec la pierre claire */
+:root{
+  --stone:#f3f2ee;        /* pierre de taille */
+  --paper:#ffffff;
+  --ink:#141a33;          /* encre */
+  --muted:#565c74;
+  --roi:#1b2a6b;          /* bleu roi */
+  --roi-deep:#111b4a;
+  --or:#b8892b;           /* feuille d'or */
+  --or-soft:#e7cf8f;
+  --line:#d9d6cc;
+  --on-roi:#f5f1e4;
+  --ok:#2f7a4f;
+  --f-display:"Cinzel","Trajan Pro",Georgia,serif;
+  --f-accent:"Cormorant",Georgia,serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --stone:#0e1330;--paper:#151b3d;--ink:#eceaf2;--muted:#a6abc4;--roi:#1d2b70;--roi-deep:#0a0f28;
+  --or:#d9b25a;--or-soft:#e7cf8f;--line:#2a3264;--on-roi:#f5f1e4;--ok:#6cc792;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --stone:#0e1330;--paper:#151b3d;--ink:#eceaf2;--muted:#a6abc4;--roi:#1d2b70;--roi-deep:#0a0f28;
+  --or:#d9b25a;--or-soft:#e7cf8f;--line:#2a3264;--on-roi:#f5f1e4;--ok:#6cc792;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--stone);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--roi-deep)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;letter-spacing:.04em;line-height:1.15;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:2px}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+
+/* Barre de navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--roi-deep);color:var(--on-roi);border-bottom:1px solid rgba(231,207,143,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{flex:none}
+.brand b{font-family:var(--f-display);font-size:1.05rem;letter-spacing:.12em;font-weight:600}
+.brand small{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or-soft)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.9rem}
+.nav ul a{text-decoration:none;opacity:.85}
+.nav ul a:hover{opacity:1;color:var(--or-soft)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .92rem var(--f-body);letter-spacing:.03em;padding:12px 20px;border-radius:2px;border:1px solid var(--or);background:var(--or);color:#141a33;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px);background:var(--or-soft)}
+.btn.ghost{background:transparent;color:var(--on-roi);border-color:rgba(231,207,143,.6)}
+.btn.ghost:hover{background:rgba(231,207,143,.12)}
+@media (max-width:820px){.nav ul{display:none}}
+
+/* Hero : la perspective */
+.hero{background:var(--roi);color:var(--on-roi);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:72px 64px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.1rem,5vw,3.6rem);font-weight:600;letter-spacing:.05em}
+.hero h1 em{display:block;font-family:var(--f-accent);font-style:italic;font-weight:500;letter-spacing:0;text-transform:none;color:var(--or-soft);font-size:.72em;margin-top:8px}
+.hero .lead{margin-top:20px;max-width:34em;font-size:1.08rem;color:rgba(245,241,228,.86)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:.88rem;color:rgba(245,241,228,.8)}
+.hero .facts span::before{content:"◆";color:var(--or);font-size:.6em;margin-right:8px;vertical-align:2px}
+.allee{width:100%;max-width:440px;justify-self:end;aspect-ratio:4/5;height:auto}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-block:48px}.allee{justify-self:center;max-width:300px;order:-1}}
+
+/* Sections */
+section.block{padding-block:80px}
+.head{display:grid;gap:12px;max-width:640px;margin-bottom:40px}
+.head h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.head p{color:var(--muted)}
+.ornament{display:block;width:120px;height:14px}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:28px 26px;display:grid;gap:10px;align-content:start}
+.svc svg{width:30px;height:30px;stroke:var(--or);fill:none;stroke-width:1.4}
+.svc h3{font-size:1.02rem;letter-spacing:.08em}
+.svc p{color:var(--muted);font-size:.95rem}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+
+/* Tarifs */
+.band{background:var(--roi-deep);color:var(--on-roi)}
+.band .head p{color:rgba(245,241,228,.75)}
+.tarifs{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:start}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:14px 4px;border-bottom:1px solid rgba(231,207,143,.22)}
+th{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or-soft);font-weight:600}
+td.prix{text-align:right;font-family:var(--f-display);font-size:1.15rem;color:var(--or-soft);white-space:nowrap}
+th.r{text-align:right}
+td small{display:block;color:rgba(245,241,228,.6);font-size:.82rem}
+.note{font-size:.85rem;color:rgba(245,241,228,.65);margin-top:14px}
+.inclus{border:1px solid rgba(231,207,143,.35);padding:26px;display:grid;gap:14px}
+.inclus h3{font-size:.95rem;letter-spacing:.12em;color:var(--or-soft)}
+.inclus ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.95rem}
+.inclus li{display:flex;gap:10px}
+.inclus li::before{content:"✓";color:var(--or)}
+@media (max-width:820px){.tarifs{grid-template-columns:1fr}}
+
+/* Pourquoi */
+.why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.why div{display:grid;gap:8px;border-top:1px solid var(--or);padding-top:18px}
+.why b{font-family:var(--f-display);font-weight:600;letter-spacing:.06em}
+.why p{color:var(--muted);font-size:.94rem}
+@media (max-width:900px){.why{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.why{grid-template-columns:1fr}}
+
+/* Zone */
+.zone{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.zone span{border:1px solid var(--line);background:var(--paper);padding:6px 12px;font-size:.88rem;border-radius:2px}
+
+/* Réservation */
+.resa{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.contact-card{background:var(--roi);color:var(--on-roi);padding:30px;display:grid;gap:18px}
+.contact-card .line{display:grid;gap:2px}
+.contact-card .line span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or-soft)}
+.contact-card .line a,.contact-card .line strong{font-size:1.15rem;font-weight:600;text-decoration:none;user-select:all}
+.contact-card p{font-size:.9rem;color:rgba(245,241,228,.75)}
+form{background:var(--paper);border:1px solid var(--line);padding:30px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--stone);border:1px solid var(--line);border-radius:2px;padding:11px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--or);outline-offset:0;border-color:var(--or)}
+textarea{min-height:90px;resize:vertical}
+form .btn{justify-self:start}
+.recap{grid-column:1/-1;border:1px solid var(--ok);padding:18px;display:grid;gap:12px}
+.recap strong{color:var(--ok)}
+.recap pre{margin:0;white-space:pre-wrap;font:inherit;font-size:.92rem;background:var(--stone);padding:12px;user-select:all}
+.recap .btn{background:transparent;color:var(--ink)}
+@media (max-width:820px){.resa{grid-template-columns:1fr}}
+@media (max-width:520px){form{grid-template-columns:1fr;padding:20px}}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding-block:18px}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--or);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:10px;max-width:62ch}
+
+/* Pied de page */
+footer{background:var(--roi-deep);color:rgba(245,241,228,.75);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:32px}
+footer b{color:var(--on-roi);font-family:var(--f-display);letter-spacing:.1em}
+.ph{background:rgba(231,207,143,.18);border-bottom:1px dashed var(--or);padding:0 3px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="none" stroke="#e7cf8f" stroke-width="1"/><path d="M17 6c-2 3-2 6 0 9 2-3 2-6 0-9zM17 15c-3-3-7-2-8 1 2 2 5 1 8-1zm0 0c3-3 7-2 8 1-2 2-5 1-8-1zM12 19h10M17 15v13" fill="none" stroke="#e7cf8f" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span><b>CARROSSE</b><small>VTC · Versailles</small></span>
+    </a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#zone">Zone</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <a class="btn" href="#reserver">Réserver</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Chauffeur privé · 7j/7 · 24h/24</p>
+      <h1>Votre chauffeur à Versailles<em>de la Cour d'honneur jusqu'à votre terminal</em></h1>
+      <p class="lead">Transferts vers les aéroports et les gares, visites du Château et des Trianons, déplacements professionnels. Prix fixé à la réservation, chauffeur ponctuel et véhicule soigné.</p>
+      <div class="ctas">
+        <a class="btn" href="#reserver">Demander une course</a>
+        <a class="btn ghost" href="tel:+33600000000">06 00 00 00 00</a>
+      </div>
+      <div class="facts"><span>Orly en 30 min environ</span><span>Prix fixe, sans surprise</span><span>Accueil pancarte à l'arrivée</span></div>
+    </div>
+    <!-- La grande perspective : allée d'arbres taillés vers le Grand Canal -->
+    <svg class="allee" viewBox="0 0 400 500" role="img" aria-label="Perspective stylisée des jardins de Versailles">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3c8a"/><stop offset="1" stop-color="#1b2a6b"/></linearGradient>
+      </defs>
+      <rect width="400" height="500" fill="url(#sky)"/>
+      <circle cx="200" cy="200" r="46" fill="#e7cf8f" opacity=".9"/>
+      <g stroke="#e7cf8f" stroke-width="1" fill="none" opacity=".55">
+        <path d="M200 200 L0 500 M200 200 L400 500 M200 200 L90 500 M200 200 L310 500"/>
+        <path d="M150 280h100M115 330h170M75 390h250M30 460h340"/>
+      </g>
+      <rect x="185" y="240" width="30" height="260" fill="#111b4a" opacity=".6"/>
+      <path d="M190 240h20l40 260h-100z" fill="#2f4aa3" opacity=".55"/>
+      <g fill="#111b4a">
+        <path d="M168 205l-4 20h8z M232 205l-4 20h8z"/>
+        <path d="M150 210l-7 34h14z M250 210l-7 34h14z"/>
+        <path d="M128 216l-11 54h22z M272 216l-11 54h22z"/>
+        <path d="M98 224l-16 82h32z M302 224l-16 82h32z"/>
+        <path d="M55 236l-25 124h50z M345 236l-25 124h50z"/>
+      </g>
+      <g stroke="#b8892b" stroke-width="1.2" fill="none">
+        <path d="M200 120v-26M190 104h20M200 94c-6-10-6-18 0-26 6 8 6 16 0 26z"/>
+      </g>
+      <text x="200" y="60" text-anchor="middle" fill="#e7cf8f" font-family="Cinzel, Georgia, serif" font-size="12" letter-spacing="5">VERSAILLES</text>
+    </svg>
+  </div>
+</header>
+
+<main>
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Services</p>
+      <h2>Une course pour chaque occasion</h2>
+      <p>Que vous soyez un Versaillais pressé, un visiteur venu du bout du monde ou une entreprise qui reçoit, je m'occupe du trajet.</p>
+    </div>
+    <div class="services">
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 17l24-7-2-3-9 2-7-5-3 1 4 6-6 2-2-2-2 1 3 5z"/><path d="M3 26h24"/></svg>
+        <h3>Aéroports</h3>
+        <p>Orly, Roissy-Charles-de-Gaulle, Beauvais. Suivi de votre vol et accueil avec pancarte au terminal.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="7" y="4" width="16" height="18" rx="3"/><path d="M7 14h16M11 22l-3 5M19 22l3 5"/><circle cx="11" cy="18" r="1"/><circle cx="19" cy="18" r="1"/></svg>
+        <h3>Gares</h3>
+        <p>Montparnasse, gare de Lyon, Massy TGV, Versailles-Chantiers. Aide aux bagages comprise.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 26h24M5 26V13h20v13M3 13l12-8 12 8M10 26v-7h10v7M15 5V2"/></svg>
+        <h3>Château &amp; Trianons</h3>
+        <p>Dépose à la grille d'honneur, attente pendant la visite et circuit du Domaine jusqu'au Hameau de la Reine.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="9" width="22" height="16" rx="2"/><path d="M11 9V6h8v3M4 16h22"/></svg>
+        <h3>Affaires</h3>
+        <p>Rendez-vous à La Défense, Vélizy ou Saint-Quentin. Facture sur demande, compte entreprise possible.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 26s-10-6-10-13a5 5 0 0110-1 5 5 0 0110 1c0 7-10 13-10 13z"/></svg>
+        <h3>Mariages &amp; soirées</h3>
+        <p>Véhicule décoré à votre demande, transport des mariés ou navettes pour vos invités.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="11"/><path d="M15 8v7l5 3"/></svg>
+        <h3>Mise à disposition</h3>
+        <p>Un chauffeur pour quelques heures ou la journée, avec un tarif horaire convenu à l'avance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="tarifs">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Tarifs</p>
+      <h2>Le prix est fixé avant de partir</h2>
+      <p>Au départ de Versailles centre, pour une berline jusqu'à 4 passagers. Pas de supplément pour les embouteillages.</p>
+    </div>
+    <div class="tarifs">
+      <div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Destination</th><th class="r">À partir de</th></tr></thead>
+            <tbody>
+              <tr><td>Aéroport d'Orly<small>environ 30 min</small></td><td class="prix">55 €</td></tr>
+              <tr><td>Paris centre<small>environ 35 min</small></td><td class="prix">60 €</td></tr>
+              <tr><td>Gare Montparnasse<small>environ 35 min</small></td><td class="prix">60 €</td></tr>
+              <tr><td>Aéroport Roissy-CDG<small>environ 55 min</small></td><td class="prix">95 €</td></tr>
+              <tr><td>Disneyland Paris<small>environ 1 h</small></td><td class="prix">120 €</td></tr>
+              <tr><td>Aéroport de Beauvais<small>environ 1 h 20</small></td><td class="prix">160 €</td></tr>
+              <tr><td>Mise à disposition<small>2 heures minimum</small></td><td class="prix">55 €/h</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note"><span class="ph">Tarifs d'exemple à remplacer par les vôtres.</span></p>
+      </div>
+      <aside class="inclus">
+        <h3>TOUJOURS INCLUS</h3>
+        <ul>
+          <li>Attente de 60 min à l'aéroport</li>
+          <li>Bouteilles d'eau et chargeurs</li>
+          <li>Siège enfant sur demande</li>
+          <li>Paiement par carte à bord</li>
+          <li>Facture envoyée par e-mail</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Pourquoi me choisir</p>
+      <h2>Le service d'un chauffeur attitré</h2>
+    </div>
+    <div class="why">
+      <div><b>Ponctualité</b><p>J'arrive 10 minutes avant l'heure prévue et je vous préviens par SMS.</p></div>
+      <div><b>Confort</b><p>Berline récente, climatisée, entretenue et nettoyée chaque jour.</p></div>
+      <div><b>Connaissance locale</b><p>Versaillais, je connais les accès du Château, les horaires et les raccourcis.</p></div>
+      <div><b>Discrétion</b><p>Chauffeur professionnel titulaire de la carte VTC, tenue soignée.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="zone" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Zone desservie</p>
+      <h2>Versailles et tout l'ouest parisien</h2>
+      <p>Prise en charge sans frais d'approche dans ces communes. Ailleurs en Île-de-France, sur devis.</p>
+    </div>
+    <div class="zone">
+      <span>Versailles</span><span>Le Chesnay-Rocquencourt</span><span>Viroflay</span><span>Vélizy-Villacoublay</span><span>Buc</span><span>Jouy-en-Josas</span><span>Saint-Cyr-l'École</span><span>Guyancourt</span><span>Montigny-le-Bretonneux</span><span>La Celle-Saint-Cloud</span><span>Saint-Germain-en-Laye</span><span>Rueil-Malmaison</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="reserver">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Réservation</p>
+      <h2>Demandez votre course</h2>
+      <p>Remplissez le formulaire, je vous confirme le prix par SMS ou par téléphone, en général sous 30 minutes.</p>
+    </div>
+    <div class="resa">
+      <div class="contact-card">
+        <div class="line"><span>Téléphone et WhatsApp</span><a href="tel:+33600000000">06 00 00 00 00</a></div>
+        <div class="line"><span>E-mail</span><strong>contact@carrosse-vtc.fr</strong></div>
+        <div class="line"><span>Disponibilité</span><strong>7j/7 · 24h/24</strong></div>
+        <p>Pour un départ dans moins de 2 heures, appelez directement.</p>
+      </div>
+      <form id="form-resa" novalidate>
+        <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" value="Marie Dupont" required></div>
+        <div class="field"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" autocomplete="tel" value="06 12 34 56 78" required></div>
+        <div class="field"><label for="date">Date</label><input id="date" name="date" type="date" required></div>
+        <div class="field"><label for="heure">Heure de prise en charge</label><input id="heure" name="heure" type="time" value="07:30" required></div>
+        <div class="field full"><label for="depart">Adresse de départ</label><input id="depart" name="depart" value="Hôtel, place d'Armes, Versailles" required></div>
+        <div class="field full"><label for="arrivee">Destination</label><input id="arrivee" name="arrivee" value="Aéroport d'Orly, terminal 1" required></div>
+        <div class="field"><label for="pax">Passagers</label>
+          <select id="pax" name="pax"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 à 7 (van)</option></select></div>
+        <div class="field"><label for="bag">Bagages</label>
+          <select id="bag" name="bag"><option>Aucun</option><option>1 ou 2</option><option selected>3 ou 4</option><option>Plus de 4</option></select></div>
+        <div class="field full"><label for="msg">Précisions (n° de vol, siège enfant…)</label><textarea id="msg" name="msg">Vol AF 1234 vers Nice</textarea></div>
+        <button class="btn" type="submit">Préparer ma demande</button>
+        <div class="recap" id="recap" hidden>
+          <strong>Votre demande est prête.</strong>
+          <p>Copiez-la et envoyez-la par SMS ou WhatsApp au 06 00 00 00 00.</p>
+          <pre id="recap-text"></pre>
+          <button class="btn" type="button" id="copy">Copier le texte</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:820px;margin-left:auto;margin-right:auto">
+    <div class="head">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2>Bon à savoir</h2>
+    </div>
+    <details><summary>Que se passe-t-il si mon vol a du retard ?</summary><p>Je suis votre vol en temps réel et j'adapte l'heure d'arrivée. L'attente liée au retard n'est pas facturée.</p></details>
+    <details><summary>Puis-je réserver à la dernière minute ?</summary><p>Oui, selon disponibilité. Appelez directement pour un départ dans les deux heures.</p></details>
+    <details><summary>Comment se passe le paiement ?</summary><p>Par carte bancaire à bord, en espèces ou par virement pour les entreprises. Le prix annoncé à la réservation est celui que vous payez.</p></details>
+    <details><summary>Pouvez-vous m'attendre pendant ma visite du Château ?</summary><p>Oui, avec la formule mise à disposition. Je vous dépose à la grille et vous récupère où vous voulez dans le Domaine.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>CARROSSE VTC</b><br>Chauffeur privé à Versailles (78000)</div>
+    <div>Carte professionnelle VTC n° <span class="ph">à compléter</span><br>Registre des exploitants VTC n° <span class="ph">EVTC000000000</span> · SIRET <span class="ph">à compléter</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document.getElementById('date');
+  try{var t=new Date();t.setDate(t.getDate()+2);d.value=t.toISOString().slice(0,10);}catch(e){}
+  var form=document.getElementById('form-resa'),recap=document.getElementById('recap'),out=document.getElementById('recap-text');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var miss=[].slice.call(form.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
+    if(miss.length){miss[0].focus();miss[0].setAttribute('aria-invalid','true');return;}
+    var v=function(id){return document.getElementById(id).value.trim();};
+    var dt=v('date');try{dt=new Date(v('date')+'T12:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});}catch(e){}
+    out.textContent='Bonjour, je souhaite réserver une course.\n'+
+      'Nom : '+v('nom')+' ('+v('tel')+')\n'+
+      'Le '+dt+' à '+v('heure')+'\n'+
+      'Départ : '+v('depart')+'\n'+
+      'Arrivée : '+v('arrivee')+'\n'+
+      'Passagers : '+v('pax')+' · Bagages : '+v('bag')+
+      (v('msg')?'\nPrécisions : '+v('msg'):'');
+    recap.hidden=false;recap.scrollIntoView({block:'nearest'});
+  });
+  document.getElementById('copy').addEventListener('click',function(){
+    var b=this;
+    function sel(){var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Texte sélectionné';}
+    try{navigator.clipboard.writeText(out.textContent).then(function(){b.textContent='Copié';},sel);}catch(e){sel();}
+  });
+})();
+</script>
+</body>
+</html>
