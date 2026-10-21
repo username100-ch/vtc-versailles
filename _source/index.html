@@ -94,7 +94,7 @@ bdi{unicode-bidi:isolate}
 @media (max-width:820px){.hero .intro{grid-template-columns:1fr;padding-block:40px 28px}.gate{min-height:0}.gate img{aspect-ratio:4/3}.panorama{aspect-ratio:5/4}.idf-ribbon{font-size:.68rem;letter-spacing:.08em}}
 
 /* hero photo pleine largeur */
-.hero{--hero:url("images/hero-cour-de-marbre.jpg");position:relative;background:var(--roi-deep);color:#fff;overflow:hidden;display:flex;align-items:flex-start;height:56.25vw;min-height:500px}
+.hero{--hero:url("images/hero-cour-de-marbre.jpg");position:relative;background:var(--roi-deep);color:#fff;overflow:hidden;display:flex;align-items:flex-start;min-height:max(500px,56.25vw)}
 .hero-photo{position:absolute;inset:0;background:var(--hero) 50% 0/cover no-repeat}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,26,.50) 0%,rgba(6,9,26,.46) 42%,rgba(6,9,26,.08) 70%,rgba(6,9,26,.22) 100%)}
 .hero-inner{position:relative;width:100%;text-align:center;display:grid;justify-items:center;gap:16px;padding-block:clamp(56px,6.5vw,130px) 24px}
@@ -121,6 +121,32 @@ bdi{unicode-bidi:isolate}
 .lang a{font:600 .76rem "Figtree",system-ui,sans-serif;letter-spacing:.06em;color:var(--on-roi);text-decoration:none;padding:7px 8px;min-width:34px;text-align:center}
 .lang a[data-l="ar"]{font-family:"Noto Sans Arabic",system-ui,sans-serif;font-size:.8rem;padding-block:4px}
 .lang a[aria-current="page"]{background:var(--or-soft);color:#141a33}
+
+/* barre de réservation rapide */
+.qb{width:min(100%,1060px);margin-top:8px;text-align:start;background:rgba(8,12,34,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(231,207,143,.55);border-radius:4px;padding:14px 16px 12px;display:grid;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);color:#fff}
+.qb{grid-template-columns:minmax(0,1fr)}
+.qb-type{display:flex;flex-wrap:wrap;gap:6px}
+.qb-type label{cursor:pointer;position:relative}
+.qb-type input{position:absolute;opacity:0;width:1px;height:1px}
+.qb-type span{display:inline-block;padding:7px 14px;border:1px solid rgba(231,207,143,.5);border-radius:999px;font-size:.84rem;font-weight:600;color:var(--or-soft)}
+.qb-type input:checked+span{background:var(--or-soft);color:#141a33;border-color:var(--or-soft)}
+.qb-type input:focus-visible+span{outline:2px solid var(--or);outline-offset:2px}
+.qb-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.5fr) minmax(0,1.05fr) minmax(0,.8fr) minmax(0,.75fr) auto;gap:8px;align-items:end}
+.qb-grid.qb-ret{grid-template-columns:repeat(2,minmax(0,210px))}
+.qf{display:grid;gap:4px;min-width:0}
+.qf label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or-soft);font-weight:600}
+.qb input,.qb select{background:#fff;color:#141a33;border:1px solid transparent;border-radius:3px;padding:10px;font:inherit;font-size:.92rem;width:100%;color-scheme:light}
+.qb input:focus,.qb select:focus{outline:2px solid var(--or);outline-offset:0}
+.qb input[aria-invalid="true"]{border-color:#e05a4a;box-shadow:0 0 0 1px #e05a4a}
+.qb-go{padding:11px 24px;white-space:nowrap;justify-content:center;justify-self:stretch}
+.qb-foot{font-size:.8rem;color:rgba(255,255,255,.78)}
+.qb-foot a{color:var(--or-soft);font-weight:600;text-decoration:none}
+@media (max-width:1000px){.qb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.qf-wide{grid-column:span 2}.qb-grid.qb-ret{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#reserver{scroll-margin-top:72px}
+.qb-note{grid-column:1/-1;border-inline-start:3px solid var(--or);background:var(--stone);padding:10px 12px;font-weight:600;font-size:.92rem}
+.recap-actions{display:flex;flex-wrap:wrap;gap:10px}
+.recap .btn.wa-send{background:#1f9d55;border-color:#1f9d55;color:#fff}
+.recap .btn.wa-send:hover{background:#178a49}
 
 /* sections */
 section.block{padding-block:80px}
@@ -433,10 +459,25 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   <div class="wrap hero-inner">
     <h1><span data-t="h1a">Votre </span><span class="gold" data-t="h1g">chauffeur privé</span><br><span data-t="h1c">à Versailles</span></h1>
     <p class="sub" data-t="sub">Service VTC · Versailles et toute l'Île-de-France, 7j/7 et 24h/24 · Courses à partir de 20 €.</p>
-    <div class="ctas">
-      <a class="btn" href="#reserver" data-t="cta">Demander une course</a>
-      <a class="btn ghost" href="tel:+33600000000"><bdi dir="ltr">06 00 00 00 00</bdi></a>
-    </div>
+    <form class="qb" id="qb" novalidate>
+      <div class="qb-type" role="radiogroup">
+        <label><input type="radio" name="qbtype" id="qb-ow-r" value="ow" checked><span data-t="qb-ow">Aller simple</span></label>
+        <label><input type="radio" name="qbtype" id="qb-ar-r" value="ar"><span data-t="qb-ar">Aller-retour</span></label>
+      </div>
+      <div class="qb-grid">
+        <div class="qf qf-wide"><label for="qb-dep" data-t="qb-dep">Départ</label><input id="qb-dep" autocomplete="street-address" required></div>
+        <div class="qf qf-wide"><label for="qb-arr" data-t="qb-arr">Arrivée</label><input id="qb-arr" required></div>
+        <div class="qf"><label for="qb-date" data-t="qb-date">Date</label><input id="qb-date" type="date" required></div>
+        <div class="qf"><label for="qb-time" data-t="qb-time">Heure</label><input id="qb-time" type="time" required></div>
+        <div class="qf"><label for="qb-pax" data-t="qb-pax">Passagers</label><select id="qb-pax"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+        <button class="btn qb-go" type="submit" data-t="qb-go">Réserver</button>
+      </div>
+      <div class="qb-grid qb-ret" id="qb-ret" hidden>
+        <div class="qf"><label for="qb-rdate" data-t="qb-rdate">Date du retour</label><input id="qb-rdate" type="date"></div>
+        <div class="qf"><label for="qb-rtime" data-t="qb-rtime">Heure du retour</label><input id="qb-rtime" type="time"></div>
+      </div>
+      <p class="qb-foot"><span data-t="qb-foot">Prix fixe confirmé rapidement · ou appelez le</span> <a href="tel:+33600000000"><bdi dir="ltr">06 00 00 00 00</bdi></a></p>
+    </form>
   </div>
 </header>
 <div class="times-band">
@@ -649,15 +690,20 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
         <p data-t="c5">Pour un départ dans moins de 2 heures, appelez directement.</p>
       </div>
       <form id="form-resa" novalidate>
+        <p class="qb-note" id="qb-note" hidden data-t="qb-note">Votre trajet est rempli : indiquez simplement votre nom et votre téléphone.</p>
         <div class="field"><label for="nom" data-t="l-nom">Nom</label><input id="nom" name="nom" autocomplete="name" required></div>
         <div class="field"><label for="tel" data-t="l-tel">Téléphone</label><input id="tel" name="tel" type="tel" autocomplete="tel" dir="ltr" required></div>
-        <div class="field"><label for="date" data-t="l-date">Date</label><input id="date" name="date" type="date" required></div>
-        <div class="field"><label for="heure" data-t="l-heure">Heure de prise en charge</label><input id="heure" name="heure" type="time" required></div>
         <div class="field full"><label for="depart" data-t="l-dep">Adresse de départ</label><input id="depart" name="depart" required></div>
         <div class="field full"><label for="arrivee" data-t="l-arr">Destination</label><input id="arrivee" name="arrivee" required></div>
+        <div class="field"><label for="trip" data-t="l-trip">Trajet</label>
+          <select id="trip" name="trip"><option value="ow" data-t="o-ow">Aller simple</option><option value="ar" data-t="o-ar">Aller-retour</option></select></div>
         <div class="field"><label for="pax" data-t="l-pax">Passagers (4 maximum)</label>
           <select id="pax" name="pax"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
-        <div class="field"><label for="bag" data-t="l-bag">Valises (3 moyennes max.)</label>
+        <div class="field"><label for="date" data-t="l-date">Date</label><input id="date" name="date" type="date" required></div>
+        <div class="field"><label for="heure" data-t="l-heure">Heure de prise en charge</label><input id="heure" name="heure" type="time" required></div>
+        <div class="field" id="ret-d" hidden><label for="rdate" data-t="l-rdate">Date du retour</label><input id="rdate" name="rdate" type="date"></div>
+        <div class="field" id="ret-t" hidden><label for="rtime" data-t="l-rtime">Heure du retour</label><input id="rtime" name="rtime" type="time"></div>
+        <div class="field full"><label for="bag" data-t="l-bag">Valises (3 moyennes max.)</label>
           <select id="bag" name="bag"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
         <div class="field full"><label for="msg" data-t="l-msg">Précisions (n° de vol, siège enfant…)</label><textarea id="msg" name="msg"></textarea></div>
         <button class="btn" type="submit" data-t="l-send">Préparer ma demande</button>
@@ -665,7 +711,10 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
           <strong data-t="rc1">Votre demande est prête.</strong>
           <p><span data-t="rc2">Copiez-la et envoyez-la par SMS ou WhatsApp au</span> <bdi dir="ltr">+33 6 00 00 00 00</bdi></p>
           <pre id="recap-text"></pre>
-          <button class="btn" type="button" id="copy" data-t="rc3">Copier le texte</button>
+          <div class="recap-actions">
+            <a class="btn wa-send" id="wa-send" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-t="rc4">Envoyer sur WhatsApp</a>
+            <button class="btn" type="button" id="copy" data-t="rc3">Copier le texte</button>
+          </div>
         </div>
       </form>
     </div>
@@ -744,6 +793,11 @@ wa:["WhatsApp","واتساب"],
 "pal-n":["Four Seasons George V, Plaza Athénée, The Peninsula, Shangri-La, Ritz, Le Bristol, Mandarin Oriental, Raffles Le Royal Monceau, Cheval Blanc…","فور سيزونز جورج الخامس، بلازا أثينيه، ذا بينينسولا، شانغريلا، ريتز، لو بريستول، ماندارين أورينتال، رافلز لو رويال مونسو، شوفال بلان…"],
 "pal-l":["I serve the great Paris hotels and palaces:","أخدم أرقى فنادق وقصور باريس الفاخرة:"],
 q6:["Can you pick me up at my hotel?","هل يمكنكم اصطحابي من فندقي؟"],q6a:["Yes, I pick you up directly at your hotel, including Paris palace hotels such as the Four Seasons George V, the Plaza Athénée, The Peninsula or the Shangri-La.","نعم، آتي لاصطحابكم مباشرة من فندقكم، بما في ذلك فنادق باريس الفاخرة مثل فور سيزونز جورج الخامس وبلازا أثينيه وذا بينينسولا وشانغريلا."],
+"qb-ow":["One way","ذهاب فقط"],"qb-ar":["Return trip","ذهاب وعودة"],"qb-dep":["Pickup","الانطلاق"],"qb-arr":["Destination","الوجهة"],"qb-date":["Date","التاريخ"],"qb-time":["Time","الوقت"],"qb-pax":["Passengers","الركاب"],"qb-go":["Book","احجز"],"qb-rdate":["Return date","تاريخ العودة"],"qb-rtime":["Return time","وقت العودة"],
+"qb-foot":["Fixed price confirmed quickly · or call","سعر ثابت يتم تأكيده بسرعة · أو اتصلوا على"],
+"l-trip":["Trip","نوع الرحلة"],"o-ow":["One way","ذهاب فقط"],"o-ar":["Return trip","ذهاب وعودة"],"l-rdate":["Return date","تاريخ العودة"],"l-rtime":["Return time","وقت العودة"],
+"qb-note":["Your trip details are filled in: just add your name and phone number.","تم ملء تفاصيل رحلتكم: أضيفوا فقط الاسم ورقم الهاتف."],
+rc4:["Send on WhatsApp","إرسال عبر واتساب"],
 "v-type":["Hybrid estate car","سيارة ستيشن هجينة"],"v-cap":["passengers max. · 3 medium suitcases","ركاب كحد أقصى · 3 حقائب متوسطة"],
 "v-eye":["Your car","سيارتكم"],
 "v-h":["I pick you up in a Toyota Corolla Touring Sports","آتي لاصطحابكم بسيارة تويوتا كورولا تورينغ سبورتس"],
@@ -788,6 +842,8 @@ var PH={
 nom:["Marie Dupont","John Smith","محمد أحمد"],tel:["06 12 34 56 78","+44 7700 900123","+33 6 12 34 56 78"],
 depart:["Ex. : place d'Armes, Versailles","e.g. your hotel, Versailles","مثال: فندقكم في فرساي"],
 arrivee:["Ex. : aéroport d'Orly, terminal 1","e.g. Charles de Gaulle, Terminal 2E","مثال: مطار شارل ديغول، المبنى 2E"],
+'qb-dep':["Ex. : place d'Armes, Versailles","e.g. your hotel, Versailles","مثال: فندقكم في فرساي"],
+'qb-arr':["Ex. : aéroport d'Orly","e.g. Charles de Gaulle Airport","مثال: مطار شارل ديغول"],
 msg:["Ex. : vol AF 1234","e.g. flight BA 304","مثال: رحلة رقم AF 1234"]};
 var IDX={fr:0,en:1,ar:2}, root=document.documentElement, lang='fr';
 var PAGE=root.getAttribute('data-page-lang');
@@ -816,11 +872,17 @@ var L={
 fr:['Bonjour, je souhaite réserver une course.','Nom : ','Le ',' à ','Départ : ','Arrivée : ','Passagers : ',' · Bagages : ','Précisions : ','fr-FR'],
 en:['Hello, I would like to book a ride.','Name: ','On ',' at ','Pickup: ','Destination: ','Passengers: ',' · Suitcases: ','Details: ','en-GB'],
 ar:['مرحباً، أود حجز رحلة.','الاسم: ','التاريخ: ',' الساعة ','الانطلاق: ','الوجهة: ','عدد الركاب: ',' · الحقائب: ','تفاصيل: ','ar']};
+var LT={fr:['Trajet : ','Aller simple','Aller-retour','Retour le ',' à '],en:['Trip: ','One way','Return trip','Return on ',' at '],ar:['نوع الرحلة: ','ذهاب فقط','ذهاب وعودة','العودة يوم ',' الساعة ']};
 function build(){
-  var w=L[lang], dt=v('date');
-  try{dt=new Date(v('date')+'T12:00').toLocaleDateString(w[9],{weekday:'long',day:'numeric',month:'long'});}catch(e){}
+  var w=L[lang], t=LT[lang];
+  function fd(x){try{var s=new Date(x+'T12:00').toLocaleDateString(w[9],{weekday:'long',day:'numeric',month:'long'});return s==='Invalid Date'?x:s;}catch(e){return x;}}
   out.setAttribute('dir',lang==='ar'?'rtl':'ltr');
-  out.textContent=w[0]+'\n'+w[1]+v('nom')+' ('+v('tel')+')\n'+w[2]+dt+w[3]+v('heure')+'\n'+w[4]+v('depart')+'\n'+w[5]+v('arrivee')+'\n'+w[6]+v('pax')+w[7]+v('bag')+(v('msg')?'\n'+w[8]+v('msg'):'');
+  var ar=v('trip')==='ar';
+  var txt=w[0]+'\n'+w[1]+v('nom')+' ('+v('tel')+')\n'+t[0]+(ar?t[2]:t[1])+'\n'+w[2]+fd(v('date'))+w[3]+v('heure')+'\n'+w[4]+v('depart')+'\n'+w[5]+v('arrivee')+'\n';
+  if(ar) txt+=t[3]+fd(v('rdate'))+t[4]+v('rtime')+'\n';
+  txt+=w[6]+v('pax')+w[7]+v('bag')+(v('msg')?'\n'+w[8]+v('msg'):'');
+  out.textContent=txt;
+  var ws=document.getElementById('wa-send'); if(ws) ws.href='https://wa.me/33600000000?text='+encodeURIComponent(txt);
 }
 var d=document.getElementById('date');
 try{var t=new Date();t.setDate(t.getDate()+1);d.min=new Date().toISOString().slice(0,10);}catch(e){}
@@ -831,6 +893,33 @@ form.addEventListener('submit',function(e){
   miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
   if(miss.length){miss[0].focus();return;}
   build(); recap.hidden=false; recap.scrollIntoView({block:'nearest'});
+});
+function setTrip(){
+  var on=document.getElementById('trip').value==='ar';
+  ['ret-d','ret-t'].forEach(function(id){document.getElementById(id).hidden=!on;});
+  ['rdate','rtime'].forEach(function(id){var f=document.getElementById(id);f.required=on;if(!on)f.removeAttribute('aria-invalid');});
+}
+document.getElementById('trip').addEventListener('change',function(){setTrip();if(!recap.hidden)build();});
+var today=new Date().toISOString().slice(0,10);
+['qb-date','qb-rdate','rdate'].forEach(function(id){try{document.getElementById(id).min=today;}catch(e){}});
+var qb=document.getElementById('qb');
+function qbAR(){return document.getElementById('qb-ar-r').checked;}
+[].forEach.call(qb.querySelectorAll('input[name=qbtype]'),function(r){r.addEventListener('change',function(){
+  var on=qbAR(); document.getElementById('qb-ret').hidden=!on;
+  ['qb-rdate','qb-rtime'].forEach(function(id){var f=document.getElementById(id);f.required=on;if(!on)f.removeAttribute('aria-invalid');});
+});});
+qb.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid');});
+qb.addEventListener('submit',function(e){
+  e.preventDefault();
+  var miss=[].slice.call(qb.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
+  miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
+  if(miss.length){miss[0].focus();return;}
+  var map={'qb-dep':'depart','qb-arr':'arrivee','qb-date':'date','qb-time':'heure','qb-pax':'pax','qb-rdate':'rdate','qb-rtime':'rtime'};
+  Object.keys(map).forEach(function(k){var t=document.getElementById(map[k]);t.value=document.getElementById(k).value;t.removeAttribute('aria-invalid');});
+  document.getElementById('trip').value=qbAR()?'ar':'ow'; setTrip();
+  document.getElementById('qb-note').hidden=false;
+  document.getElementById('reserver').scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){try{document.getElementById('nom').focus({preventScroll:true});}catch(err){}},600);
 });
 document.getElementById('copy').addEventListener('click',function(){
   var b=this;
