@@ -10,13 +10,13 @@ IDX={'fr':0,'en':1,'ar':2}
 URL={'fr':BASE,'en':BASE+'en/','ar':BASE+'ar/'}
 META={
 'fr':dict(title="Chauffeur VTC à Versailles et Paris | Carrosse VTC",
-  desc="Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG, Orly et Le Bourget, Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.",
+  desc="Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG et Orly, palaces parisiens (George V, Plaza Athénée, Peninsula), Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.",
   og="fr_FR"),
 'en':dict(title="Private Driver in Paris & Versailles | Chauffeur Service | Carrosse VTC",
-  desc="Private chauffeur in Paris and Versailles, 24/7: airport transfers from Charles de Gaulle, Orly and Le Bourget, shopping on the Champs-Élysées, Disneyland and Palace of Versailles tours. Fixed price, book on WhatsApp.",
+  desc="Private chauffeur in Paris and Versailles, 24/7: airport transfers from Charles de Gaulle and Orly, Paris palace hotels (George V, Plaza Athénée, Peninsula), shopping on the Champs-Élysées, Disneyland and Palace of Versailles tours. Fixed price, book on WhatsApp.",
   og="en_GB"),
 'ar':dict(title="سائق خاص في باريس وفرساي | ليموزين وتوصيل من المطار | كاروس VTC",
-  desc="سائق خاص في باريس وفرساي على مدار الساعة: استقبال وتوصيل من مطار شارل ديغول وأورلي ولو بورجيه، جولات تسوق في الشانزليزيه، ديزني لاند وقصر فرساي. سيارة مع سائق للعائلات بسعر ثابت، والحجز عبر واتساب.",
+  desc="سائق خاص في باريس وفرساي على مدار الساعة: استقبال وتوصيل من مطار شارل ديغول وأورلي إلى فنادق باريس الفاخرة (جورج الخامس، بلازا أثينيه، بينينسولا)، جولات تسوق في الشانزليزيه، ديزني لاند وقصر فرساي. سيارة مع سائق للعائلات بسعر ثابت، والحجز عبر واتساب.",
   og="ar_AR"),
 }
 def head_tags(l):
@@ -29,7 +29,7 @@ def head_tags(l):
         "address":{"@type":"PostalAddress","addressLocality":"Versailles","postalCode":"78000","addressRegion":"Île-de-France","addressCountry":"FR"},
         "areaServed":[{"@type":"AdministrativeArea","name":"Île-de-France"},{"@type":"City","name":"Paris"},{"@type":"City","name":"Versailles"}],
         "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
-        "makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":n}} for n in ("Airport transfer CDG Orly Le Bourget","Paris chauffeur service","Disneyland Paris transfer","Versailles Palace tour")]}
+        "makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":n}} for n in ("Airport transfer CDG Orly","Paris palace hotel transfers","Paris chauffeur service","Disneyland Paris transfer","Versailles Palace tour")]}
     return (f'<title>{html.escape(m["title"])}</title>\n'
             f'<meta name="description" content="{html.escape(m["desc"])}">\n'
             f'<link rel="canonical" href="{URL[l]}">\n'+alts+
