@@ -180,6 +180,7 @@ th,td{text-align:start;padding:14px 4px;border-bottom:1px solid rgba(231,207,143
 th{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or-soft);font-weight:600}
 th.r,td.prix{text-align:end}
 td.prix{font-family:"Cinzel",Georgia,serif;font-size:1.15rem;color:var(--or-soft);white-space:nowrap}
+tr.min td{border-bottom-color:rgba(231,207,143,.5)}
 td small{display:block;color:rgba(245,241,228,.6);font-size:.82rem}
 .note{font-size:.85rem;color:rgba(245,241,228,.65);margin-top:14px}
 .inclus{border:1px solid rgba(231,207,143,.35);padding:26px;display:grid;gap:14px}
@@ -456,6 +457,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
           <table>
             <thead><tr><th data-t="f-dest">Destination</th><th class="r" data-t="f-from">À partir de</th></tr></thead>
             <tbody>
+              <tr class="min"><td><span data-t="r0">Course dans Versailles</span><small data-t="r0s">Tarif minimum d'une course</small></td><td class="prix"><bdi>20 €</bdi></td></tr>
               <tr><td><span data-t="r1">Aéroport d'Orly</span><small data-t="t1v">~ 30 min</small></td><td class="prix"><bdi>55 €</bdi></td></tr>
               <tr><td><span data-t="r2">Tour Eiffel</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
               <tr><td><span data-t="r3">Paris centre</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
@@ -467,7 +469,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
             </tbody>
           </table>
         </div>
-        <p class="note"><span class="ph" data-t="f-note">Tarifs d'exemple à remplacer par les vôtres.</span></p>
+        <p class="note"><span data-t="f-min">Course minimum : 20 €, quelle que soit la distance.</span><br><span class="ph" data-t="f-note">Tarifs d'exemple à remplacer par les vôtres.</span></p>
       </div>
       <aside class="inclus">
         <h3 data-t="i-h">TOUJOURS INCLUS</h3>
@@ -569,6 +571,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
     <details><summary data-t="q3">Vous déplacez-vous en dehors de Versailles ?</summary><p data-t="q3a">Oui, partout en Île-de-France : Paris et les 7 autres départements. Les trajets plus longs se font sur devis.</p></details>
     <details><summary data-t="q6">Pouvez-vous venir me chercher à mon hôtel ?</summary><p data-t="q6a">Oui, je viens vous chercher directement à votre hôtel, y compris dans les palaces parisiens comme le Four Seasons George V, le Plaza Athénée, The Peninsula ou le Shangri-La.</p></details>
     <details><summary data-t="q4">Puis-je réserver à la dernière minute ?</summary><p data-t="q4a">Oui, selon disponibilité. Appelez directement pour un départ dans les deux heures.</p></details>
+    <details><summary data-t="q7">Y a-t-il un prix minimum pour une course ?</summary><p data-t="q7a">Oui, une course coûte au minimum 20 €, par exemple pour un trajet à l'intérieur de Versailles.</p></details>
     <details><summary data-t="q5">Comment se passe le paiement ?</summary><p data-t="q5a">Par carte bancaire à bord, en espèces ou par virement pour les entreprises. Le prix annoncé est celui que vous payez.</p></details>
   </div>
 </section>
@@ -642,6 +645,7 @@ v4:["Child and booster seats on request","مقاعد ومعززات للأطفا
 "f-h":["Your price is fixed before we leave","السعر محدد قبل الانطلاق"],
 "f-p":["From Versailles, up to 4 passengers and 3 medium suitcases. No extra charge for traffic jams.","انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام."],
 "f-dest":["Destination","الوجهة"],"f-from":["From","ابتداءً من"],
+r0:["Ride within Versailles","رحلة داخل فرساي"],r0s:["Minimum fare per ride","الحد الأدنى لسعر الرحلة"],"f-min":["Minimum fare: €20, whatever the distance.","الحد الأدنى لسعر الرحلة: 20 €، مهما كانت المسافة."],
 r1:["Orly Airport","مطار أورلي"],r2:["Eiffel Tower","برج إيفل"],r3:["Central Paris","وسط باريس"],r4:["Montparnasse station","محطة مونبارناس"],r5:["Charles de Gaulle Airport","مطار شارل ديغول"],r6:["Disneyland Paris","ديزني لاند باريس"],r7:["Beauvais Airport","مطار بوفيه"],r8:["Hourly hire","سائق بالساعة"],r8s:["2 hours minimum","ساعتان كحد أدنى"],r8p:["€55/h","55 € / ساعة"],
 "f-note":["Sample fares, to be replaced.","أسعار على سبيل المثال، سيتم تحديثها."],
 "i-h":["ALWAYS INCLUDED","مشمول دائماً"],i1:["60 min free waiting at the airport","انتظار مجاني لمدة 60 دقيقة في المطار"],i2:["Water bottles and phone chargers","زجاجات مياه وشواحن للهاتف"],i3:["Child seat on request","مقعد للأطفال عند الطلب"],i4:["Card payment on board","الدفع بالبطاقة داخل السيارة"],i5:["Receipt sent by email","إرسال الفاتورة عبر البريد الإلكتروني"],
@@ -664,6 +668,7 @@ q1:["What if my flight is delayed?","ماذا لو تأخرت رحلتي الج�
 q2:["How many passengers can you take?","كم عدد الركاب الذين يمكنكم نقلهم؟"],q2a:["Up to 4 passengers and 3 medium-sized suitcases, in my hybrid Toyota Corolla Touring Sports.","4 ركاب كحد أقصى و3 حقائب متوسطة الحجم، على متن سيارتي الهجينة تويوتا كورولا تورينغ سبورتس."],
 q3:["Do you work outside Versailles?","هل تعملون خارج فرساي؟"],q3a:["Yes, anywhere in the Paris region: Paris and the 7 other départements. Longer trips are quoted on request.","نعم، في جميع أنحاء إيل دو فرانس: باريس والمقاطعات السبع الأخرى. الرحلات الأبعد بعرض سعر."],
 q4:["Can I book at the last minute?","هل يمكنني الحجز في آخر لحظة؟"],q4a:["Yes, subject to availability. Call directly for a pickup within two hours.","نعم، حسب التوفر. اتصلوا مباشرة للانطلاق خلال ساعتين."],
+q7:["Is there a minimum fare?","هل هناك حد أدنى لسعر الرحلة؟"],q7a:["Yes, every ride costs at least €20, for example a trip within Versailles.","نعم، الحد الأدنى لسعر أي رحلة هو 20 €، مثل رحلة داخل فرساي."],
 q5:["How do I pay?","كيف يتم الدفع؟"],q5a:["By card on board, cash, or bank transfer for companies. The price quoted is the price you pay.","بالبطاقة البنكية داخل السيارة، نقداً، أو بتحويل بنكي للشركات. السعر المُعلن هو السعر الذي تدفعونه."],
 ft1:["Private driver in Versailles and the Paris region","سائق خاص في فرساي وإيل دو فرانس"],ft2:["VTC driver card no.","رقم بطاقة VTC المهنية"],ft3:["VTC operator register no.","رقم سجل مشغلي VTC"]
 };
