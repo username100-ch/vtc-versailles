@@ -9,13 +9,13 @@ T,PH=data['T'],data['PH']
 IDX={'fr':0,'en':1,'ar':2}
 URL={'fr':BASE,'en':BASE+'en/','ar':BASE+'ar/'}
 META={
-'fr':dict(title="Chauffeur VTC à Versailles et Paris | Carrosse VTC",
+'fr':dict(title="Chauffeur VTC à Versailles et Paris | Carrosse Driver",
   desc="Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG et Orly, palaces parisiens (George V, Plaza Athénée, Peninsula), Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.",
   og="fr_FR"),
-'en':dict(title="Private Driver in Paris & Versailles | Chauffeur Service | Carrosse VTC",
+'en':dict(title="Private Driver in Paris & Versailles | Chauffeur Service | Carrosse Driver",
   desc="Private chauffeur in Paris and Versailles, 24/7: airport transfers from Charles de Gaulle and Orly, Paris palace hotels (George V, Plaza Athénée, Peninsula), shopping on the Champs-Élysées, Disneyland and Palace of Versailles tours. Fixed price, book on WhatsApp.",
   og="en_GB"),
-'ar':dict(title="سائق خاص في باريس وفرساي | ليموزين وتوصيل من المطار | كاروس VTC",
+'ar':dict(title="سائق خاص في باريس وفرساي | ليموزين وتوصيل من المطار | كاروس درايفر",
   desc="سائق خاص في باريس وفرساي على مدار الساعة: استقبال وتوصيل من مطار شارل ديغول وأورلي إلى فنادق باريس الفاخرة (جورج الخامس، بلازا أثينيه، بينينسولا)، جولات تسوق في الشانزليزيه، ديزني لاند وقصر فرساي. سيارة مع سائق للعائلات بسعر ثابت، والحجز عبر واتساب.",
   og="ar_AR"),
 }
@@ -24,7 +24,7 @@ def head_tags(l):
     alts=''.join(f'<link rel="alternate" hreflang="{k}" href="{URL[k]}">\n' for k in ('fr','en','ar'))
     alts+=f'<link rel="alternate" hreflang="x-default" href="{URL["en"]}">\n'
     ld={"@context":"https://schema.org","@type":"LocalBusiness","@id":BASE+"#business",
-        "name":"Carrosse VTC","url":URL[l],"image":BASE+"images/hero-cour-de-marbre.jpg",
+        "name":"Carrosse Driver","url":URL[l],"image":BASE+"images/hero-cour-de-marbre.jpg",
         "description":m['desc'],"telephone":"+33600000000","priceRange":"€€",
         "address":{"@type":"PostalAddress","addressLocality":"Versailles","postalCode":"78000","addressRegion":"Île-de-France","addressCountry":"FR"},
         "areaServed":[{"@type":"AdministrativeArea","name":"Île-de-France"},{"@type":"City","name":"Paris"},{"@type":"City","name":"Versailles"}],
@@ -33,7 +33,7 @@ def head_tags(l):
     return (f'<title>{html.escape(m["title"])}</title>\n'
             f'<meta name="description" content="{html.escape(m["desc"])}">\n'
             f'<link rel="canonical" href="{URL[l]}">\n'+alts+
-            f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Carrosse VTC">\n'
+            f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Carrosse Driver">\n'
             f'<meta property="og:title" content="{html.escape(m["title"])}">\n<meta property="og:description" content="{html.escape(m["desc"])}">\n'
             f'<meta property="og:url" content="{URL[l]}">\n<meta property="og:image" content="{BASE}images/hero-cour-de-marbre.jpg">\n<meta property="og:locale" content="{m["og"]}">\n'
             f'<meta name="twitter:card" content="summary_large_image">\n'
