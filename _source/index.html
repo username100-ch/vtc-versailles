@@ -131,17 +131,17 @@ bdi{unicode-bidi:isolate}
 .qb-type span{display:inline-block;padding:7px 14px;border:1px solid rgba(231,207,143,.5);border-radius:999px;font-size:.84rem;font-weight:600;color:var(--or-soft)}
 .qb-type input:checked+span{background:var(--or-soft);color:#141a33;border-color:var(--or-soft)}
 .qb-type input:focus-visible+span{outline:2px solid var(--or);outline-offset:2px}
-.qb-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.5fr) minmax(0,1.05fr) minmax(0,.8fr) minmax(0,.75fr) auto;gap:8px;align-items:end}
+.qb-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1.35fr) minmax(0,1.05fr) minmax(0,1fr) minmax(0,.66fr) minmax(0,.66fr) auto;gap:8px;align-items:end}
 .qb-grid.qb-ret{grid-template-columns:repeat(2,minmax(0,210px))}
 .qf{display:grid;gap:4px;min-width:0}
 .qf label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or-soft);font-weight:600}
-.qb input,.qb select{background:#fff;color:#141a33;border:1px solid transparent;border-radius:3px;padding:10px;font:inherit;font-size:.92rem;width:100%;color-scheme:light}
+.qb input,.qb select{height:44px;background:#fff;color:#141a33;border:1px solid transparent;border-radius:3px;padding:10px 8px;font:inherit;font-size:.92rem;width:100%;color-scheme:light}
 .qb input:focus,.qb select:focus{outline:2px solid var(--or);outline-offset:0}
 .qb input[aria-invalid="true"]{border-color:#e05a4a;box-shadow:0 0 0 1px #e05a4a}
-.qb-go{padding:11px 24px;white-space:nowrap;justify-content:center;justify-self:stretch}
+.qb-go{height:44px;padding:0 24px;white-space:nowrap;justify-content:center;justify-self:stretch}
 .qb-foot{font-size:.8rem;color:rgba(255,255,255,.78)}
 .qb-foot a{color:var(--or-soft);font-weight:600;text-decoration:none}
-@media (max-width:1000px){.qb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.qf-wide{grid-column:span 2}.qb-grid.qb-ret{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1000px){.qb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.qf-wide,.qb-go{grid-column:span 2}.qb-grid.qb-ret{grid-template-columns:repeat(2,minmax(0,1fr))}}
 #reserver{scroll-margin-top:72px}
 .qb-note{grid-column:1/-1;border-inline-start:3px solid var(--or);background:var(--stone);padding:10px 12px;font-weight:600;font-size:.92rem}
 .recap-actions{display:flex;flex-wrap:wrap;gap:10px}
@@ -156,7 +156,9 @@ bdi{unicode-bidi:isolate}
 .ac-list .tag{flex:none;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--or);min-width:4.8em}
 .ac-list .lab{min-width:0;overflow-wrap:anywhere}
 .ac-list .lab small{display:block;color:var(--muted);font-size:.78rem}
-.hero{overflow:visible;z-index:3}
+.hero{overflow:visible}
+.qb{position:relative;z-index:5}
+@media (min-width:821px){.times-band{position:relative;z-index:4;margin-top:-52px;padding-top:64px;border-bottom:1px solid rgba(231,207,143,.25);background:linear-gradient(180deg,rgba(8,12,34,0) 0,rgba(8,12,34,.55) 18px,rgba(11,18,56,.9) 40px,var(--roi-deep) 52px);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}}
 
 /* sections */
 section.block{padding-block:80px}
@@ -480,6 +482,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
         <div class="qf"><label for="qb-date" data-t="qb-date">Date</label><input id="qb-date" type="date" required></div>
         <div class="qf"><label for="qb-time" data-t="qb-time">Heure</label><input id="qb-time" type="time" required></div>
         <div class="qf"><label for="qb-pax" data-t="qb-pax">Passagers</label><select id="qb-pax"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+        <div class="qf"><label for="qb-bag" data-t="qb-bag">Bagages</label><select id="qb-bag"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
         <button class="btn qb-go" type="submit" data-t="qb-go">Réserver</button>
       </div>
       <div class="qb-grid qb-ret" id="qb-ret" hidden>
@@ -803,7 +806,7 @@ wa:["WhatsApp","واتساب"],
 "pal-n":["Four Seasons George V, Plaza Athénée, The Peninsula, Shangri-La, Ritz, Le Bristol, Mandarin Oriental, Raffles Le Royal Monceau, Cheval Blanc…","فور سيزونز جورج الخامس، بلازا أثينيه، ذا بينينسولا، شانغريلا، ريتز، لو بريستول، ماندارين أورينتال، رافلز لو رويال مونسو، شوفال بلان…"],
 "pal-l":["I serve the great Paris hotels and palaces:","أخدم أرقى فنادق وقصور باريس الفاخرة:"],
 q6:["Can you pick me up at my hotel?","هل يمكنكم اصطحابي من فندقي؟"],q6a:["Yes, I pick you up directly at your hotel, including Paris palace hotels such as the Four Seasons George V, the Plaza Athénée, The Peninsula or the Shangri-La.","نعم، آتي لاصطحابكم مباشرة من فندقكم، بما في ذلك فنادق باريس الفاخرة مثل فور سيزونز جورج الخامس وبلازا أثينيه وذا بينينسولا وشانغريلا."],
-"qb-ow":["One way","ذهاب فقط"],"qb-ar":["Return trip","ذهاب وعودة"],"qb-dep":["Pickup","الانطلاق"],"qb-arr":["Destination","الوجهة"],"qb-date":["Date","التاريخ"],"qb-time":["Time","الوقت"],"qb-pax":["Passengers","الركاب"],"qb-go":["Book","احجز"],"qb-rdate":["Return date","تاريخ العودة"],"qb-rtime":["Return time","وقت العودة"],
+"qb-ow":["One way","ذهاب فقط"],"qb-ar":["Return trip","ذهاب وعودة"],"qb-dep":["Pickup","الانطلاق"],"qb-arr":["Destination","الوجهة"],"qb-date":["Date","التاريخ"],"qb-time":["Time","الوقت"],"qb-pax":["Passengers","الركاب"],"qb-bag":["Suitcases","الحقائب"],"qb-go":["Book","احجز"],"qb-rdate":["Return date","تاريخ العودة"],"qb-rtime":["Return time","وقت العودة"],
 "qb-foot":["Fixed price confirmed quickly · or call","سعر ثابت يتم تأكيده بسرعة · أو اتصلوا على"],
 "l-trip":["Trip","نوع الرحلة"],"o-ow":["One way","ذهاب فقط"],"o-ar":["Return trip","ذهاب وعودة"],"l-rdate":["Return date","تاريخ العودة"],"l-rtime":["Return time","وقت العودة"],
 "qb-note":["Your trip details are filled in: just add your name and phone number.","تم ملء تفاصيل رحلتكم: أضيفوا فقط الاسم ورقم الهاتف."],
@@ -924,7 +927,7 @@ qb.addEventListener('submit',function(e){
   var miss=[].slice.call(qb.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
   miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
   if(miss.length){miss[0].focus();return;}
-  var map={'qb-dep':'depart','qb-arr':'arrivee','qb-date':'date','qb-time':'heure','qb-pax':'pax','qb-rdate':'rdate','qb-rtime':'rtime'};
+  var map={'qb-dep':'depart','qb-arr':'arrivee','qb-date':'date','qb-time':'heure','qb-pax':'pax','qb-bag':'bag','qb-rdate':'rdate','qb-rtime':'rtime'};
   Object.keys(map).forEach(function(k){var t=document.getElementById(map[k]);t.value=document.getElementById(k).value;t.removeAttribute('aria-invalid');});
   document.getElementById('trip').value=qbAR()?'ar':'ow'; setTrip();
   document.getElementById('qb-note').hidden=false;
