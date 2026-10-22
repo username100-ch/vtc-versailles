@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Chauffeur VTC à Versailles, disponible dans toute l'Île-de-France 7j/7 : aéroports Orly et Roissy, Disneyland, Tour Eiffel, gares, visites du Château. Prix fixe. Site en français, anglais et arabe.">
+<meta name="description" content="Chauffeur VTC à Versailles, disponible dans toute l'Île-de-France 7j/7 : aéroports Orly et Roissy, Disneyland, Tour Eiffel, gares, visites du Château. Devis instantané en ligne. Site en français, anglais et arabe.">
 <title>Carrosse Driver Versailles</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,6 +158,19 @@ bdi{unicode-bidi:isolate}
 .ac-list .lab small{display:block;color:var(--muted);font-size:.78rem}
 .hero{overflow:visible}
 .qb{position:relative;z-index:5}
+
+/* devis instantané */
+.qb-quote{display:grid;gap:6px;border:1px solid rgba(231,207,143,.6);background:rgba(231,207,143,.1);border-radius:4px;padding:12px 14px;color:#fff;font-size:.9rem}
+.qb-quote.wait,.qb-quote.none{display:block;color:rgba(255,255,255,.85)}
+.qq-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.qq-lab{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--or-soft);font-weight:600}
+.qq-price{font-family:"Cinzel",Georgia,serif;font-size:1.9rem;line-height:1;color:var(--or-soft)}
+.qq-meta{color:rgba(255,255,255,.8)}
+.qq-note{font-size:.8rem;color:rgba(255,255,255,.72)}
+.qq-go{justify-self:start;margin-top:4px}
+.qb-quote.light{grid-column:1/-1;color:var(--ink);background:var(--stone);border-color:var(--or)}
+.qb-quote.light .qq-price,.qb-quote.light .qq-lab{color:var(--or)}
+.qb-quote.light .qq-meta,.qb-quote.light .qq-note,.qb-quote.light.wait,.qb-quote.light.none{color:var(--muted)}
 
 /* sections */
 section.block{padding-block:80px}
@@ -469,7 +482,7 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   <div class="hero-photo" role="img" aria-label="Toyota Corolla Touring Sports noire garée dans la cour de Marbre du château de Versailles"></div>
   <div class="wrap hero-inner">
     <h1><span data-t="h1a">Votre </span><span class="gold" data-t="h1g">chauffeur privé</span><br><span data-t="h1c">à Versailles</span></h1>
-    <p class="sub" data-t="sub">Service VTC · Versailles et toute l'Île-de-France, 7j/7 et 24h/24 · Courses à partir de 20 €.</p>
+    <p class="sub" data-t="sub">Service VTC · Versailles et toute l'Île-de-France, 7j/7 et 24h/24 · Courses à partir de 30 €.</p>
     <form class="qb" id="qb" novalidate>
       <div class="qb-type" role="radiogroup">
         <label><input type="radio" name="qbtype" id="qb-ow-r" value="ow" checked><span data-t="qb-ow">Aller simple</span></label>
@@ -482,13 +495,14 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
         <div class="qf"><label for="qb-time" data-t="qb-time">Heure</label><input id="qb-time" type="time" required></div>
         <div class="qf"><label for="qb-pax" data-t="qb-pax">Passagers</label><select id="qb-pax"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
         <div class="qf"><label for="qb-bag" data-t="qb-bag">Bagages</label><select id="qb-bag"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
-        <button class="btn qb-go" type="submit" data-t="qb-go">Réserver</button>
+        <button class="btn qb-go" type="submit" data-t="qb-go">Voir le prix</button>
       </div>
       <div class="qb-grid qb-ret" id="qb-ret" hidden>
         <div class="qf"><label for="qb-rdate" data-t="qb-rdate">Date du retour</label><input id="qb-rdate" type="date"></div>
         <div class="qf"><label for="qb-rtime" data-t="qb-rtime">Heure du retour</label><input id="qb-rtime" type="time"></div>
       </div>
-      <p class="qb-foot"><span data-t="qb-foot">Prix fixe confirmé rapidement · ou appelez le</span> <a href="tel:+33600000000"><bdi dir="ltr">06 00 00 00 00</bdi></a></p>
+      <div class="qb-quote" id="qb-quote" hidden aria-live="polite"></div>
+      <p class="qb-foot"><span data-t="qb-foot">Prix instantané, confirmé par votre chauffeur · ou appelez le</span> <a href="tel:+33674599349"><bdi dir="ltr">06 74 59 93 49</bdi></a></p>
     </form>
   </div>
 </header>
@@ -613,8 +627,8 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
   <div class="wrap">
     <div class="head">
       <p class="eyebrow" data-t="n3">Tarifs</p>
-      <h2 data-t="f-h">Le prix est fixé avant de partir</h2>
-      <p data-t="f-p">Notre tarif minimum est de 20 € par course. Au départ de Versailles, jusqu'à 4 passagers et 3 valises moyennes. Pas de supplément pour les embouteillages.</p>
+      <h2 data-t="f-h">Votre prix en un clic</h2>
+      <p data-t="f-p">Indiquez votre trajet en haut de la page : le prix s'affiche aussitôt, puis votre chauffeur le confirme. Tarif minimum : 30 € par course. Au départ de Versailles, jusqu'à 4 passagers et 3 valises moyennes. Pas de supplément pour les embouteillages.</p>
     </div>
     <div class="tarifs">
       <div>
@@ -622,19 +636,17 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
           <table>
             <thead><tr><th data-t="f-dest">Destination</th><th class="r" data-t="f-from">À partir de</th></tr></thead>
             <tbody>
-              <tr class="min"><td><span class="route"><span data-t="city">Versailles</span><svg class="arr" viewBox="0 0 34 12" aria-hidden="true"><path d="M1 6h29M24 1.5 31 6l-7 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="city">Versailles</span></span><small data-t="r0s">Tarif minimum d'une course</small></td><td class="prix"><bdi>20 €</bdi></td></tr>
-              <tr><td><span data-t="r1">Aéroport d'Orly</span><small data-t="t1v">~ 30 min</small></td><td class="prix"><bdi>55 €</bdi></td></tr>
-              <tr><td><span data-t="r2">Tour Eiffel</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
-              <tr><td><span data-t="r3">Paris centre</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
-              <tr><td><span data-t="r4">Gare Montparnasse</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
+              <tr class="min"><td><span class="route"><span data-t="city">Versailles</span><svg class="arr" viewBox="0 0 34 12" aria-hidden="true"><path d="M1 6h29M24 1.5 31 6l-7 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="city">Versailles</span></span><small data-t="r0s">Tarif minimum d'une course</small></td><td class="prix"><bdi>30 €</bdi></td></tr>
+              <tr><td><span data-t="r1">Aéroport d'Orly</span><small data-t="t1v">~ 30 min</small></td><td class="prix"><bdi>60 €</bdi></td></tr>
               <tr><td><span data-t="r5">Aéroport Roissy-CDG</span><small data-t="t3v">~ 55 min</small></td><td class="prix"><bdi>95 €</bdi></td></tr>
-              <tr><td><span data-t="r6">Disneyland Paris</span><small data-t="t4v">~ 1 h</small></td><td class="prix"><bdi>120 €</bdi></td></tr>
               <tr><td><span data-t="r7">Aéroport de Beauvais</span><small data-t="t5v">~ 1 h 20</small></td><td class="prix"><bdi>160 €</bdi></td></tr>
-              <tr><td><span data-t="r8">Mise à disposition</span><small data-t="r8s">2 heures minimum</small></td><td class="prix"><bdi data-t="r8p">55 €/h</bdi></td></tr>
+              <tr><td><span data-t="r3">Paris et ses gares</span><small data-t="t2v">~ 35 min</small></td><td class="prix"><bdi>55 €</bdi></td></tr>
+              <tr><td><span data-t="r6">Disneyland Paris</span><small data-t="t4v">~ 1 h</small></td><td class="prix"><bdi>120 €</bdi></td></tr>
+              <tr><td><span data-t="r8">Mise à disposition</span><small data-t="r8s">2 heures minimum</small></td><td class="prix"><bdi data-t="r8p">150 €</bdi></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="note"><span data-t="f-min">Course minimum : 20 €, quelle que soit la distance.</span><br><span class="ph" data-t="f-note">Tarifs d'exemple à remplacer par les vôtres.</span></p>
+        <p class="note"><span data-t="f-min">Course minimum : 30 €, quelle que soit la distance.</span><br><span data-t="f-night">Majoration de 20 % pour les courses de nuit, entre 22 h et 6 h.</span></p>
       </div>
       <aside class="inclus">
         <h3 data-t="i-h">TOUJOURS INCLUS</h3>
@@ -691,12 +703,12 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
     <div class="head">
       <p class="eyebrow" data-t="b-eye">Réservation</p>
       <h2 data-t="b-h">Demandez votre course</h2>
-      <p data-t="b-p">Remplissez le formulaire, je vous confirme le prix par SMS ou par téléphone, en général sous 30 minutes. Tarif minimum : 20 € par course.</p>
+      <p data-t="b-p">Remplissez le formulaire, je vous confirme le prix par SMS ou par téléphone, en général sous 30 minutes. Tarif minimum : 30 € par course.</p>
     </div>
     <div class="resa">
       <div class="contact-card">
-        <div class="line"><span data-t="c1">Téléphone et WhatsApp</span><a href="tel:+33600000000"><bdi dir="ltr">+33 6 00 00 00 00</bdi></a></div>
-        <div class="line"><span data-t="c2">E-mail</span><strong><bdi dir="ltr">contact@carrosse-driver.fr</bdi></strong></div>
+        <div class="line"><span data-t="c1">Téléphone et WhatsApp</span><a href="tel:+33674599349"><bdi dir="ltr">+33 6 74 59 93 49</bdi></a></div>
+        <div class="line"><span data-t="c2">E-mail</span><strong><bdi dir="ltr">contact@carossedriver.fr</bdi></strong></div>
         <div class="line"><span data-t="c3">Disponibilité</span><strong data-t="c3v">7j/7 · 24h/24</strong></div>
         <div class="line"><span data-t="c4">Véhicule</span><strong data-t="c4v">Toyota Corolla Touring Sports hybride · 4 passagers et 3 valises moyennes max.</strong></div>
         <p data-t="c5">Pour un départ dans moins de 2 heures, appelez directement.</p>
@@ -718,13 +730,14 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
         <div class="field full"><label for="bag" data-t="l-bag">Valises (3 moyennes max.)</label>
           <select id="bag" name="bag"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
         <div class="field full"><label for="msg" data-t="l-msg">Précisions (n° de vol, siège enfant…)</label><textarea id="msg" name="msg"></textarea></div>
+        <div class="qb-quote light" id="f-quote" hidden aria-live="polite"></div>
         <button class="btn" type="submit" data-t="l-send">Préparer ma demande</button>
         <div class="recap" id="recap" hidden>
           <strong data-t="rc1">Votre demande est prête.</strong>
-          <p><span data-t="rc2">Copiez-la et envoyez-la par SMS ou WhatsApp au</span> <bdi dir="ltr">+33 6 00 00 00 00</bdi></p>
+          <p><span data-t="rc2">Copiez-la et envoyez-la par SMS ou WhatsApp au</span> <bdi dir="ltr">+33 6 74 59 93 49</bdi></p>
           <pre id="recap-text"></pre>
           <div class="recap-actions">
-            <a class="btn wa-send" id="wa-send" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-t="rc4">Envoyer sur WhatsApp</a>
+            <a class="btn wa-send" id="wa-send" href="https://wa.me/33674599349" target="_blank" rel="noopener" data-t="rc4">Envoyer sur WhatsApp</a>
             <button class="btn" type="button" id="copy" data-t="rc3">Copier le texte</button>
           </div>
         </div>
@@ -744,8 +757,20 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
     <details><summary data-t="q3">Vous déplacez-vous en dehors de Versailles ?</summary><p data-t="q3a">Oui, partout en Île-de-France : Paris et les 7 autres départements. Les trajets plus longs se font sur devis.</p></details>
     <details><summary data-t="q6">Pouvez-vous venir me chercher à mon hôtel ?</summary><p data-t="q6a">Oui, je viens vous chercher directement à votre hôtel, y compris dans les palaces parisiens comme le Four Seasons George V, le Plaza Athénée, The Peninsula ou le Shangri-La.</p></details>
     <details><summary data-t="q4">Puis-je réserver à la dernière minute ?</summary><p data-t="q4a">Oui, selon disponibilité. Appelez directement pour un départ dans les deux heures.</p></details>
-    <details><summary data-t="q7">Y a-t-il un prix minimum pour une course ?</summary><p data-t="q7a">Oui, une course coûte au minimum 20 €, par exemple pour un trajet à l'intérieur de Versailles.</p></details>
+    <details><summary data-t="q7">Y a-t-il un prix minimum pour une course ?</summary><p data-t="q7a">Oui, une course coûte au minimum 30 €, par exemple pour un trajet à l'intérieur de Versailles.</p></details>
     <details><summary data-t="q5">Comment se passe le paiement ?</summary><p data-t="q5a">Par carte bancaire à bord, en espèces ou par virement pour les entreprises. Le prix annoncé est celui que vous payez.</p></details>
+  </div>
+</section>
+
+<section class="block" id="mentions" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <div class="head">
+      <p class="eyebrow">Informations légales</p>
+      <h2>Mentions légales</h2>
+    </div>
+    <details><summary>Éditeur du site</summary><p>WB DRIVER, SAS au capital de 100 €, exploitant sous la marque Carrosse Driver<br>Siège social : 6 avenue de la Libération, 92350 Le Plessis-Robinson<br>Immatriculée au Registre national des entreprises (RNE) sous le n° <bdi dir="ltr">998 946 594</bdi><br>SIRET : <bdi dir="ltr">998 946 594 00012</bdi> · TVA intracommunautaire : <bdi dir="ltr">FR59 998 946 594</bdi><br>Téléphone : <a href="tel:+33674599349"><bdi dir="ltr">06 74 59 93 49</bdi></a> · E-mail : <a href="mailto:contact@carossedriver.fr"><bdi dir="ltr">contact@carossedriver.fr</bdi></a><br>Directeur de la publication : WB DRIVER</p></details>
+    <details><summary>Hébergeur</summary><p>Hostinger International Ltd<br>61 Lordou Vironos Street, 6023 Larnaca, Chypre<br><a href="https://www.hostinger.fr" target="_blank" rel="noopener">www.hostinger.fr</a></p></details>
+    <details><summary>Données personnelles</summary><p>Le formulaire de réservation ne stocke aucune donnée sur ce site : votre demande est préparée sur votre appareil, puis c'est vous qui l'envoyez par SMS ou WhatsApp. Les informations reçues (nom, téléphone, adresses, horaires) servent uniquement à organiser votre course et ne sont jamais revendues. Pendant la saisie, les adresses tapées sont envoyées au service public de géocodage de l'IGN (Géoplateforme) pour proposer des suggestions. Vous pouvez demander l'accès à vos données ou leur suppression à <a href="mailto:contact@carossedriver.fr"><bdi dir="ltr">contact@carossedriver.fr</bdi></a>.</p></details>
   </div>
 </section>
 </main>
@@ -753,11 +778,11 @@ footer b{color:var(--on-roi);font-family:"Cinzel",Georgia,serif;letter-spacing:.
 <footer>
   <div class="wrap">
     <div><b>CARROSSE DRIVER</b><br><span data-t="ft1">Chauffeur privé à Versailles, toute l'Île-de-France</span></div>
-    <div><span data-t="ft2">Carte professionnelle VTC n°</span> <span class="ph">…</span><br><span data-t="ft3">Registre des exploitants VTC n°</span> <span class="ph">EVTC…</span> · SIRET <span class="ph">…</span></div>
+    <div>SIRET <bdi dir="ltr">998 946 594 00012</bdi> · <a href="#mentions">Mentions légales</a></div>
   </div>
 </footer>
 
-<a class="wa-float" id="wa-float" href="https://wa.me/33600000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa-float" id="wa-float" href="https://wa.me/33674599349" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.3 28.8l6.6-1.7A12.7 12.7 0 1 0 16 3.2Zm0 23.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.5 10.5 0 1 1 16 26.4Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.6 8.6 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2.1.9 2.9 1 3.9.8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.1-.3-.2-.6-.4Z"/></svg>
   <span data-t="wa">WhatsApp</span>
 </a>
@@ -770,10 +795,10 @@ n1:["Services","الخدمات"],n2:["The car","السيارة"],n3:["Fares","ا
 "h-eye":["Private driver · All of Greater Paris · 24/7","سائق خاص · جميع أنحاء إيل دو فرانس · على مدار الساعة"],
 h1:["Your private driver from Versailles","سائقكم الخاص انطلاقاً من فرساي"],
 h1b:["from the Palace gates to your terminal","من بوابة القصر إلى صالة المطار"],
-lead:["Based in Versailles, I drive you anywhere in the Paris region: airports, train stations, central Paris, Disneyland and Palace visits. Fixed price when you book, an on-time driver and a spotless car.","مقيم في فرساي، أوصلكم إلى أي مكان في إيل دو فرانس: المطارات، محطات القطار، وسط باريس، ديزني لاند وزيارات القصر. سعر ثابت عند الحجز، سائق دقيق في مواعيده وسيارة نظيفة."],
+lead:["Based in Versailles, I drive you anywhere in the Paris region: airports, train stations, central Paris, Disneyland and Palace visits. Instant online price, an on-time driver and a spotless car.","مقيم في فرساي، أوصلكم إلى أي مكان في إيل دو فرانس: المطارات، محطات القطار، وسط باريس، ديزني لاند وزيارات القصر. سعر ثابت عند الحجز، سائق دقيق في مواعيده وسيارة نظيفة."],
 cta:["Request a ride","اطلبوا رحلة"],
 h1a:["Your ",""],h1g:["private driver","سائقكم الخاص"],h1c:["in Versailles","في فرساي"],
-sub:["Private hire service · Versailles and the whole Paris region, 24/7 · Rides from €20.","خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة · رحلات ابتداءً من 20 €."],
+sub:["Private hire service · Versailles and the whole Paris region, 24/7 · Rides from €30.","خدمة سائق خاص · فرساي وجميع أنحاء إيل دو فرانس، على مدار الساعة · رحلات ابتداءً من 30 €."],
 t1:["Orly Airport","مطار أورلي"],t2:["Eiffel Tower","برج إيفل"],t3:["Charles de Gaulle","مطار شارل ديغول"],t4:["Disneyland","ديزني لاند"],
 t1v:["~ 30 min","~ 30 دقيقة"],t2v:["~ 35 min","~ 35 دقيقة"],t3v:["~ 55 min","~ 55 دقيقة"],t4v:["~ 1 h","~ ساعة واحدة"],t5v:["~ 1 h 20","~ ساعة و20 دقيقة"],
 tcap:["Average travel times from Versailles, outside rush hour.","متوسط مدة الرحلة من فرساي، خارج أوقات الذروة."],
@@ -805,8 +830,8 @@ wa:["WhatsApp","واتساب"],
 "pal-n":["Four Seasons George V, Plaza Athénée, The Peninsula, Shangri-La, Ritz, Le Bristol, Mandarin Oriental, Raffles Le Royal Monceau, Cheval Blanc…","فور سيزونز جورج الخامس، بلازا أثينيه، ذا بينينسولا، شانغريلا، ريتز، لو بريستول، ماندارين أورينتال، رافلز لو رويال مونسو، شوفال بلان…"],
 "pal-l":["I serve the great Paris hotels and palaces:","أخدم أرقى فنادق وقصور باريس الفاخرة:"],
 q6:["Can you pick me up at my hotel?","هل يمكنكم اصطحابي من فندقي؟"],q6a:["Yes, I pick you up directly at your hotel, including Paris palace hotels such as the Four Seasons George V, the Plaza Athénée, The Peninsula or the Shangri-La.","نعم، آتي لاصطحابكم مباشرة من فندقكم، بما في ذلك فنادق باريس الفاخرة مثل فور سيزونز جورج الخامس وبلازا أثينيه وذا بينينسولا وشانغريلا."],
-"qb-ow":["One way","ذهاب فقط"],"qb-ar":["Return trip","ذهاب وعودة"],"qb-dep":["Pickup","الانطلاق"],"qb-arr":["Destination","الوجهة"],"qb-date":["Date","التاريخ"],"qb-time":["Time","الوقت"],"qb-pax":["Passengers","الركاب"],"qb-bag":["Suitcases","الحقائب"],"qb-go":["Book","احجز"],"qb-rdate":["Return date","تاريخ العودة"],"qb-rtime":["Return time","وقت العودة"],
-"qb-foot":["Fixed price confirmed quickly · or call","سعر ثابت يتم تأكيده بسرعة · أو اتصلوا على"],
+"qb-ow":["One way","ذهاب فقط"],"qb-ar":["Return trip","ذهاب وعودة"],"qb-dep":["Pickup","الانطلاق"],"qb-arr":["Destination","الوجهة"],"qb-date":["Date","التاريخ"],"qb-time":["Time","الوقت"],"qb-pax":["Passengers","الركاب"],"qb-bag":["Suitcases","الحقائب"],"qb-go":["See the price","اعرف السعر"],"qb-rdate":["Return date","تاريخ العودة"],"qb-rtime":["Return time","وقت العودة"],
+"qb-foot":["Instant price, confirmed by your driver · or call","سعر فوري يؤكده السائق · أو اتصلوا على"],
 "l-trip":["Trip","نوع الرحلة"],"o-ow":["One way","ذهاب فقط"],"o-ar":["Return trip","ذهاب وعودة"],"l-rdate":["Return date","تاريخ العودة"],"l-rtime":["Return time","وقت العودة"],
 "qb-note":["Your trip details are filled in: just add your name and phone number.","تم ملء تفاصيل رحلتكم: أضيفوا فقط الاسم ورقم الهاتف."],
 rc4:["Send on WhatsApp","إرسال عبر واتساب"],
@@ -820,11 +845,12 @@ v3:["Hybrid: pulls away on electric power, quiet cabin and a very smooth ride","
 v5:["Eco-friendly: low fuel consumption and reduced CO₂ emissions","صديقة للبيئة: استهلاك منخفض للوقود وانبعاثات أقل من ثاني أكسيد الكربون"],
 v4:["Child and booster seats on request","مقاعد ومعززات للأطفال عند الطلب"],
 "v-aside":["More than 4 of you? Get in touch and I'll help you find a suitable option.","أكثر من 4 أشخاص؟ تواصلوا معي وسأساعدكم في إيجاد حل مناسب."],
-"f-h":["Your price is fixed before we leave","السعر محدد قبل الانطلاق"],
-"f-p":["Our minimum fare is €20 per ride. From Versailles, up to 4 passengers and 3 medium suitcases. No extra charge for traffic jams.","الحد الأدنى لسعر الرحلة لدينا هو 20 €. انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام."],
+"f-h":["Your price in one click","سعركم بنقرة واحدة"],
+"f-p":["Enter your trip at the top of the page: the price appears instantly, then your driver confirms it. Minimum fare: €30 per ride. From Versailles, up to 4 passengers and 3 medium suitcases. No extra charge for traffic jams.","أدخلوا رحلتكم أعلى الصفحة: يظهر السعر فوراً، ثم يؤكده السائق. الحد الأدنى لسعر الرحلة 30 €. انطلاقاً من فرساي، حتى 4 ركاب و3 حقائب متوسطة. لا رسوم إضافية بسبب الازدحام."],
 "f-dest":["Destination","الوجهة"],"f-from":["From","ابتداءً من"],
-city:["Versailles","فرساي"],r0s:["Minimum fare per ride","الحد الأدنى لسعر الرحلة"],"f-min":["Minimum fare: €20, whatever the distance.","الحد الأدنى لسعر الرحلة: 20 €، مهما كانت المسافة."],
-r1:["Orly Airport","مطار أورلي"],r2:["Eiffel Tower","برج إيفل"],r3:["Central Paris","وسط باريس"],r4:["Montparnasse station","محطة مونبارناس"],r5:["Charles de Gaulle Airport","مطار شارل ديغول"],r6:["Disneyland Paris","ديزني لاند باريس"],r7:["Beauvais Airport","مطار بوفيه"],r8:["Hourly hire","سائق بالساعة"],r8s:["2 hours minimum","ساعتان كحد أدنى"],r8p:["€55/h","55 € / ساعة"],
+city:["Versailles","فرساي"],r0s:["Minimum fare per ride","الحد الأدنى لسعر الرحلة"],"f-min":["Minimum fare: €30, whatever the distance.","الحد الأدنى لسعر الرحلة: 30 €، مهما كانت المسافة."],
+r1:["Orly Airport","مطار أورلي"],r2:["Eiffel Tower","برج إيفل"],r3:["Paris and its train stations","باريس ومحطات القطار"],r4:["Montparnasse station","محطة مونبارناس"],r5:["Charles de Gaulle Airport","مطار شارل ديغول"],r6:["Disneyland Paris","ديزني لاند باريس"],r7:["Beauvais Airport","مطار بوفيه"],r8:["Hourly hire","سائق بالساعة"],r8s:["2 hours minimum","ساعتان كحد أدنى"],r8p:["€150","150 €"],
+"f-night":["20% surcharge for night rides, between 10 pm and 6 am.","زيادة بنسبة 20% على الرحلات الليلية، بين الساعة 22:00 والساعة 6:00."],
 "f-note":["Sample fares, to be replaced.","أسعار على سبيل المثال، سيتم تحديثها."],
 "i-h":["ALWAYS INCLUDED","مشمول دائماً"],i1:["60 min free waiting at the airport","انتظار مجاني لمدة 60 دقيقة في المطار"],i2:["Water bottles and phone chargers","زجاجات مياه وشواحن للهاتف"],i3:["Child seat on request","مقعد للأطفال عند الطلب"],i4:["Card payment on board","الدفع بالبطاقة داخل السيارة"],i5:["Receipt sent by email","إرسال الفاتورة عبر البريد الإلكتروني"],
 "w-eye":["Why choose me","لماذا تختارونني"],"w-h":["The care of a dedicated driver","خدمة سائق مخصص لكم"],
@@ -836,7 +862,7 @@ w4:["Discretion","الاحترافية والتحفظ"],w4p:["Licensed professio
 "z-big":["All 8 départements, day and night.","المقاطعات الثماني، ليلاً ونهاراً."],
 "z-p":["I pick you up anywhere in the Paris region, and longer trips are available on quote: Chartres, Reims, Normandy…","آتي لاصطحابكم أينما كنتم في إيل دو فرانس، ويمكن تنظيم رحلات أبعد بعرض سعر: شارتر، ريمس، نورماندي…"],
 "b-eye":["Booking","الحجز"],"b-h":["Request your ride","اطلبوا رحلتكم"],
-"b-p":["Fill in the form and I'll confirm the price by text or phone, usually within 30 minutes. Minimum fare: €20 per ride.","املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة. الحد الأدنى لسعر الرحلة: 20 €."],
+"b-p":["Fill in the form and I'll confirm the price by text or phone, usually within 30 minutes. Minimum fare: €30 per ride.","املؤوا النموذج وسأؤكد لكم السعر برسالة أو مكالمة، عادةً خلال 30 دقيقة. الحد الأدنى لسعر الرحلة: 30 €."],
 c1:["Phone & WhatsApp","الهاتف وواتساب"],c2:["Email","البريد الإلكتروني"],c3:["Availability","التوفر"],c3v:["24/7","على مدار الساعة، طوال الأسبوع"],c4:["Car","السيارة"],c4v:["Toyota Corolla Touring Sports hybrid · up to 4 passengers and 3 medium suitcases","تويوتا كورولا تورينغ سبورتس هجينة · 4 ركاب و3 حقائب متوسطة كحد أقصى"],
 c5:["For a pickup within the next 2 hours, please call.","للانطلاق خلال أقل من ساعتين، يرجى الاتصال مباشرة."],
 "l-nom":["Name","الاسم"],"l-tel":["Phone","الهاتف"],"l-date":["Date","التاريخ"],"l-heure":["Pickup time","وقت الانطلاق"],"l-dep":["Pickup address","عنوان الانطلاق"],"l-arr":["Destination","الوجهة"],"l-pax":["Passengers (4 max.)","عدد الركاب (4 كحد أقصى)"],"l-bag":["Suitcases (3 medium max.)","الحقائب (3 متوسطة كحد أقصى)"],"l-msg":["Details (flight number, child seat…)","تفاصيل (رقم الرحلة، مقعد طفل…)"],"l-send":["Prepare my request","تجهيز طلبي"],
@@ -846,7 +872,7 @@ q1:["What if my flight is delayed?","ماذا لو تأخرت رحلتي الج�
 q2:["How many passengers can you take?","كم عدد الركاب الذين يمكنكم نقلهم؟"],q2a:["Up to 4 passengers and 3 medium-sized suitcases, in my hybrid Toyota Corolla Touring Sports.","4 ركاب كحد أقصى و3 حقائب متوسطة الحجم، على متن سيارتي الهجينة تويوتا كورولا تورينغ سبورتس."],
 q3:["Do you work outside Versailles?","هل تعملون خارج فرساي؟"],q3a:["Yes, anywhere in the Paris region: Paris and the 7 other départements. Longer trips are quoted on request.","نعم، في جميع أنحاء إيل دو فرانس: باريس والمقاطعات السبع الأخرى. الرحلات الأبعد بعرض سعر."],
 q4:["Can I book at the last minute?","هل يمكنني الحجز في آخر لحظة؟"],q4a:["Yes, subject to availability. Call directly for a pickup within two hours.","نعم، حسب التوفر. اتصلوا مباشرة للانطلاق خلال ساعتين."],
-q7:["Is there a minimum fare?","هل هناك حد أدنى لسعر الرحلة؟"],q7a:["Yes, every ride costs at least €20, for example a trip within Versailles.","نعم، الحد الأدنى لسعر أي رحلة هو 20 €، مثل رحلة داخل فرساي."],
+q7:["Is there a minimum fare?","هل هناك حد أدنى لسعر الرحلة؟"],q7a:["Yes, every ride costs at least €30, for example a trip within Versailles.","نعم، الحد الأدنى لسعر أي رحلة هو 30 €، مثل رحلة داخل فرساي."],
 q5:["How do I pay?","كيف يتم الدفع؟"],q5a:["By card on board, cash, or bank transfer for companies. The price quoted is the price you pay.","بالبطاقة البنكية داخل السيارة، نقداً، أو بتحويل بنكي للشركات. السعر المُعلن هو السعر الذي تدفعونه."],
 ft1:["Private driver in Versailles and the Paris region","سائق خاص في فرساي وإيل دو فرانس"],ft2:["VTC driver card no.","رقم بطاقة VTC المهنية"],ft3:["VTC operator register no.","رقم سجل مشغلي VTC"]
 };
@@ -867,7 +893,7 @@ function setLang(l){
   if(!IDX.hasOwnProperty(l)) l='fr';
   lang=l; root.setAttribute('data-lang',l); root.setAttribute('lang',l); root.setAttribute('dir',l==='ar'?'rtl':'ltr');
   if(!PAGE) nodes.forEach(function(el){var k=el.getAttribute('data-t');el.innerHTML=(l==='fr'||!T[k])?el._fr:esc(T[k][IDX[l]-1]);});
-  var wa=document.getElementById('wa-float'); if(wa) wa.href='https://wa.me/33600000000?text='+encodeURIComponent(WA[l]);
+  var wa=document.getElementById('wa-float'); if(wa) wa.href='https://wa.me/33674599349?text='+encodeURIComponent(WA[l]);
   Object.keys(PH).forEach(function(id){var el=document.getElementById(id);if(el)el.placeholder=PH[id][IDX[l]];});
   [].forEach.call(document.querySelectorAll('.lang button'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-l')===l);});
   if(!PAGE){try{localStorage.setItem('carrosse-lang',l);}catch(e){}}
@@ -893,8 +919,9 @@ function build(){
   var txt=w[0]+'\n'+w[1]+v('nom')+' ('+v('tel')+')\n'+t[0]+(ar?t[2]:t[1])+'\n'+w[2]+fd(v('date'))+w[3]+v('heure')+'\n'+w[4]+v('depart')+'\n'+w[5]+v('arrivee')+'\n';
   if(ar) txt+=t[3]+fd(v('rdate'))+t[4]+v('rtime')+'\n';
   txt+=w[6]+v('pax')+w[7]+v('bag')+(v('msg')?'\n'+w[8]+v('msg'):'');
+  if(lastQuote){var qt=QT[lang]; txt+='\n'+qt.line+lastQuote.price+' € (≈ '+Math.round(lastQuote.km)+' km)'+qt.conf;}
   out.textContent=txt;
-  var ws=document.getElementById('wa-send'); if(ws) ws.href='https://wa.me/33600000000?text='+encodeURIComponent(txt);
+  var ws=document.getElementById('wa-send'); if(ws) ws.href='https://wa.me/33674599349?text='+encodeURIComponent(txt);
 }
 var d=document.getElementById('date');
 try{var t=new Date();t.setDate(t.getDate()+1);d.min=new Date().toISOString().slice(0,10);}catch(e){}
@@ -904,7 +931,10 @@ form.addEventListener('submit',function(e){
   var miss=[].slice.call(form.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
   miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
   if(miss.length){miss[0].focus();return;}
-  build(); recap.hidden=false; recap.scrollIntoView({block:'nearest'});
+  var fq=document.getElementById('f-quote'); showQuote(fq,'wait');
+  quote(document.getElementById('depart'),document.getElementById('arrivee'),document.getElementById('trip').value==='ar',document.getElementById('heure').value,document.getElementById('rtime').value).then(function(q){
+    lastQuote=q; showQuote(fq,q); build(); recap.hidden=false; recap.scrollIntoView({block:'nearest'});
+  });
 });
 function setTrip(){
   var on=document.getElementById('trip').value==='ar';
@@ -921,18 +951,6 @@ function qbAR(){return document.getElementById('qb-ar-r').checked;}
   ['qb-rdate','qb-rtime'].forEach(function(id){var f=document.getElementById(id);f.required=on;if(!on)f.removeAttribute('aria-invalid');});
 });});
 qb.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid');});
-qb.addEventListener('submit',function(e){
-  e.preventDefault();
-  var miss=[].slice.call(qb.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
-  miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
-  if(miss.length){miss[0].focus();return;}
-  var map={'qb-dep':'depart','qb-arr':'arrivee','qb-date':'date','qb-time':'heure','qb-pax':'pax','qb-bag':'bag','qb-rdate':'rdate','qb-rtime':'rtime'};
-  Object.keys(map).forEach(function(k){var t=document.getElementById(map[k]);t.value=document.getElementById(k).value;t.removeAttribute('aria-invalid');});
-  document.getElementById('trip').value=qbAR()?'ar':'ow'; setTrip();
-  document.getElementById('qb-note').hidden=false;
-  document.getElementById('reserver').scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(function(){try{document.getElementById('nom').focus({preventScroll:true});}catch(err){}},600);
-});
 /* ---------- suggestions d'adresses ---------- */
 var POI=[
 ['air',"Aéroport Paris-Orly","Orly 94390","orly aeroport airport"],
@@ -987,7 +1005,7 @@ function autocomplete(input){
   function close(){list.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');cur=-1;}
   function mark(i){cur=i;[].forEach.call(list.children,function(li,k){li.setAttribute('aria-selected',k===i?'true':'false');});
     if(i>=0){input.setAttribute('aria-activedescendant',list.children[i].id);list.children[i].scrollIntoView({block:'nearest'});}}
-  function pick(i){var it=items[i]; if(!it) return; input.value=it.v; input.removeAttribute('aria-invalid'); close();}
+  function pick(i){var it=items[i]; if(!it) return; input.value=it.v; input._ll=it.ll||null; input.removeAttribute('aria-invalid'); close(); input.dispatchEvent(new Event('change'));}
   function render(){
     list.innerHTML='';
     if(!items.length){close();return;}
@@ -1006,7 +1024,7 @@ function autocomplete(input){
     var q=input.value.trim(), nq=nrm(q), toks=nq.split(' ').filter(Boolean), my=++seq;
     if(toks.length===0){items=[];render();return;}
     var loc=POI.filter(function(p){return toks.every(function(t){return p[4].indexOf(t)>=0;});}).slice(0,5)
-      .map(function(p){return {t:p[0],a:p[1],b:p[2],v:p[1]+(p[0]==='hotel'?', '+p[2]:'')};});
+      .map(function(p){return {t:p[0],a:p[1],b:p[2],v:p[1]+(p[0]==='hotel'?', '+p[2]:''),ll:COORD[p[1]]||null};});
     items=loc; render();
     if(q.length<3) return;
     if(ctrl){try{ctrl.abort();}catch(e){}}
@@ -1016,13 +1034,13 @@ function autocomplete(input){
       fetch(url,ctrl?{signal:ctrl.signal}:{}).then(function(r){return r.ok?r.json():null;}).then(function(d){
         if(!d||my!==seq) return;
         var seen={}; loc.forEach(function(x){seen[nrm(x.v)]=1;});
-        var adr=(d.features||[]).map(function(f){var p=f.properties||{};return {t:'adr',a:p.label||p.name||'',b:'',v:p.label||p.name||''};})
+        var adr=(d.features||[]).map(function(f){var p=f.properties||{},g=f.geometry&&f.geometry.coordinates;return {t:'adr',a:p.label||p.name||'',b:'',v:p.label||p.name||'',ll:g?[g[1],g[0]]:null};})
           .filter(function(x){if(!x.v||seen[nrm(x.v)]) return false; seen[nrm(x.v)]=1; return true;});
         items=loc.concat(adr).slice(0,8); render();
       }).catch(function(){});
     }catch(e){}
   }
-  input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(search,180);});
+  input.addEventListener('input',function(){input._ll=null;clearTimeout(timer);timer=setTimeout(search,180);});
   input.addEventListener('focus',function(){if(input.value.trim())search();});
   input.addEventListener('blur',function(){setTimeout(close,120);});
   input.addEventListener('keydown',function(e){
@@ -1035,6 +1053,108 @@ function autocomplete(input){
   });
 }
 ['qb-dep','qb-arr','depart','arrivee'].forEach(function(id){autocomplete(document.getElementById(id));});
+/* ---------- devis instantané ----------
+   TARIFS À AJUSTER : modifiez seulement les nombres ci-dessous. */
+var TARIF={
+  minimum:30,          // prix minimum d'une course (€)
+  priseEnCharge:10,    // forfait de départ (€)
+  parKm:1.9,           // prix par kilomètre (€)
+  arrondi:5,           // arrondi au multiple de 5 € supérieur
+  allerRetour:2,       // aller-retour = 2 trajets
+  nuit:0.20,           // majoration de nuit (+20 %)
+  nuitDebut:22, nuitFin:6,  // de 22 h à 6 h
+  // forfaits au départ ou à l'arrivée de Versailles (rayon de 10 km autour du château)
+  forfaits:{orly:60,cdg:95,beauvais:160,disney:120,paris:55}
+};
+var COORD={"Aéroport Paris-Orly": [48.7262, 2.3652], "Aéroport Roissy-Charles-de-Gaulle, Terminal 1": [49.0144, 2.5419], "Aéroport Roissy-Charles-de-Gaulle, Terminal 2E": [49.0045, 2.5713], "Aéroport Roissy-Charles-de-Gaulle, Terminal 2F": [49.0108, 2.5512], "Aéroport Roissy-Charles-de-Gaulle, Terminal 3": [49.0137, 2.5394], "Aéroport de Beauvais-Tillé": [49.4545, 2.1128], "Gare Montparnasse": [48.841, 2.32], "Gare de Lyon": [48.8443, 2.3744], "Gare du Nord (Eurostar)": [48.8809, 2.3553], "Gare de l'Est": [48.8768, 2.3592], "Gare Saint-Lazare": [48.8763, 2.3254], "Gare d'Austerlitz": [48.8423, 2.3656], "Gare de Massy TGV": [48.7254, 2.2611], "Gare Marne-la-Vallée – Chessy": [48.8697, 2.7832], "Gare de Versailles-Chantiers": [48.7953, 2.1355], "Gare de Versailles Château – Rive Gauche": [48.8003, 2.1295], "Gare de Versailles Rive Droite": [48.8098, 2.1347], "Château de Versailles, place d'Armes": [48.8049, 2.1204], "Domaine de Trianon": [48.815, 2.109], "Tour Eiffel": [48.8584, 2.2945], "Avenue des Champs-Élysées": [48.8698, 2.3076], "Musée du Louvre": [48.8606, 2.3376], "Disneyland Paris": [48.8722, 2.7758], "La Vallée Village": [48.8551, 2.7966], "Galeries Lafayette Haussmann": [48.8738, 2.332], "La Défense": [48.892, 2.238], "Four Seasons Hotel George V": [48.8688, 2.3007], "Hôtel Plaza Athénée": [48.8661, 2.3043], "The Peninsula Paris": [48.8705, 2.2934], "Shangri-La Paris": [48.8634, 2.2935], "Ritz Paris": [48.8682, 2.3289], "Le Bristol Paris": [48.8717, 2.3147], "Mandarin Oriental Paris": [48.8668, 2.327], "Raffles Le Royal Monceau": [48.876, 2.2994], "Cheval Blanc Paris": [48.859, 2.3428], "Waldorf Astoria Versailles – Trianon Palace": [48.8121, 2.1183], "Le Grand Contrôle": [48.803, 2.1205]};
+var CHATEAU=[48.8049,2.1204];
+function hav(a,b){var R=6371,r=Math.PI/180,dLa=(b[0]-a[0])*r,dLo=(b[1]-a[1])*r,s=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dLo/2)*Math.sin(dLo/2);return 2*R*Math.asin(Math.sqrt(s));}
+function zone(p){
+  if(hav(p,COORD["Aéroport Paris-Orly"])<3) return 'orly';
+  if(hav(p,[49.0097,2.5479])<4.5) return 'cdg';
+  if(hav(p,COORD["Aéroport de Beauvais-Tillé"])<4) return 'beauvais';
+  if(hav(p,[48.8700,2.7830])<4) return 'disney';
+  if(p[0]>48.815&&p[0]<48.903&&p[1]>2.224&&p[1]<2.470) return 'paris';
+  if(hav(p,CHATEAU)<=10) return 'versailles';
+  return '';
+}
+function locate(input){
+  if(input._ll) return Promise.resolve(input._ll);
+  var q=input.value.trim(), nq=nrm(q);
+  for(var i=0;i<POI.length;i++){ if(nrm(POI[i][1])===nq||nrm(POI[i][1]+' '+POI[i][2])===nq||nrm(POI[i][1]+', '+POI[i][2])===nq){ var c=COORD[POI[i][1]]; if(c) return Promise.resolve(c);} }
+  return fetch('https://data.geopf.fr/geocodage/search?q='+encodeURIComponent(q)+'&limit=1&lat=48.8049&lon=2.1204')
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(d){var f=d&&d.features&&d.features[0]; return f?[f.geometry.coordinates[1],f.geometry.coordinates[0]]:null;})
+    .catch(function(){return null;});
+}
+function route(a,b){
+  var url='https://data.geopf.fr/navigation/itineraire?resource=bdtopo-osrm&profile=car&optimization=fastest&start='+a[1]+','+a[0]+'&end='+b[1]+','+b[0]+'&distanceUnit=kilometer&timeUnit=minute&getSteps=false&geometryFormat=geojson';
+  var est={km:hav(a,b)*1.3,min:null,approx:true}; est.min=Math.round(est.km/40*60+8);
+  return fetch(url).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(d&&typeof d.distance==='number') return {km:d.distance,min:Math.round(d.duration),approx:false};
+    return est;
+  }).catch(function(){return est;});
+}
+function priceFor(a,b,km){
+  var za=zone(a), zb=zone(b), f=null;
+  if(za==='versailles'&&TARIF.forfaits[zb]) f=TARIF.forfaits[zb];
+  else if(zb==='versailles'&&TARIF.forfaits[za]) f=TARIF.forfaits[za];
+  var p=f!==null?f:TARIF.priseEnCharge+TARIF.parKm*km;
+  p=Math.ceil(p/TARIF.arrondi)*TARIF.arrondi;
+  return {price:Math.max(TARIF.minimum,p),forfait:f!==null};
+}
+function isNight(t){ if(!t) return false; var h=parseInt(t.split(':')[0],10); return h>=TARIF.nuitDebut||h<TARIF.nuitFin; }
+function leg(base,t){ return isNight(t)?Math.ceil(base*(1+TARIF.nuit)/TARIF.arrondi)*TARIF.arrondi:base; }
+function quote(depInput,arrInput,isAR,t1,t2){
+  return Promise.all([locate(depInput),locate(arrInput)]).then(function(ll){
+    if(!ll[0]||!ll[1]) return null;
+    return route(ll[0],ll[1]).then(function(r){
+      var p=priceFor(ll[0],ll[1],r.km), tot=leg(p.price,t1);
+      if(isAR) tot+=leg(p.price,t2);
+      return {km:r.km,min:r.min,approx:r.approx,one:p.price,price:tot,ar:isAR,forfait:p.forfait,night:isNight(t1)||(isAR&&isNight(t2))};
+    });
+  });
+}
+var QT={
+ fr:{calc:'Calcul du prix…',est:'Estimation',ar:'aller-retour',ow:'aller simple',note:'Prix indicatif, confirmé par votre chauffeur avant la course.',nightTxt:'majoration de nuit incluse',none:"Nous n'avons pas pu calculer le prix automatiquement : votre chauffeur vous enverra un devis rapidement.",go:'Réserver à ce prix',line:'Estimation en ligne : ',conf:' (à confirmer par le chauffeur)'},
+ en:{calc:'Calculating your price…',est:'Estimate',ar:'return trip',ow:'one way',note:'Indicative price, confirmed by your driver before the ride.',nightTxt:'night surcharge included',none:"We couldn't calculate the price automatically: your driver will send you a quote shortly.",go:'Book at this price',line:'Online estimate: ',conf:' (to be confirmed by the driver)'},
+ ar:{calc:'جارٍ حساب السعر…',est:'السعر التقديري',ar:'ذهاب وعودة',ow:'ذهاب فقط',note:'سعر تقديري، يؤكده السائق قبل الرحلة.',nightTxt:'شامل زيادة الرحلات الليلية',none:'تعذّر حساب السعر تلقائياً: سيرسل لكم السائق عرض سعر قريباً.',go:'احجز بهذا السعر',line:'السعر التقديري عبر الموقع: ',conf:' (يؤكده السائق)'}};
+var lastQuote=null;
+function fmtMin(m){ if(m==null) return ''; var h=Math.floor(m/60), mm=m%60; return h?h+' h '+(mm<10?'0':'')+mm:mm+' min'; }
+function showQuote(box,q){
+  var t=QT[lang], base=box.id==='f-quote'?'qb-quote light':'qb-quote'; box.hidden=false; box.innerHTML='';
+  if(q==='wait'){ box.className=base+' wait'; box.textContent=t.calc; return; }
+  if(!q){ box.className=base+' none'; box.textContent=t.none; return; }
+  box.className=base;
+  var top=document.createElement('div'); top.className='qq-top';
+  var lab=document.createElement('span'); lab.className='qq-lab'; lab.textContent=t.est+' · '+(q.ar?t.ar:t.ow);
+  var pr=document.createElement('b'); pr.className='qq-price'; pr.setAttribute('dir','ltr'); pr.textContent=q.price+' €';
+  var meta=document.createElement('span'); meta.className='qq-meta'; meta.setAttribute('dir','ltr'); meta.textContent='≈ '+Math.max(1,Math.round(q.km))+' km · '+fmtMin(q.min)+(q.night?' · '+t.nightTxt:'');
+  top.appendChild(lab); top.appendChild(pr); top.appendChild(meta);
+  var note=document.createElement('p'); note.className='qq-note'; note.textContent=t.note;
+  box.appendChild(top); box.appendChild(note);
+  if(box.id==='qb-quote'){ var go=document.createElement('button'); go.type='button'; go.className='btn qq-go'; go.textContent=t.go; go.addEventListener('click',goForm); box.appendChild(go); }
+}
+function goForm(){
+  var map={'qb-dep':'depart','qb-arr':'arrivee','qb-date':'date','qb-time':'heure','qb-pax':'pax','qb-bag':'bag','qb-rdate':'rdate','qb-rtime':'rtime'};
+  Object.keys(map).forEach(function(k){var t=document.getElementById(map[k]);t.value=document.getElementById(k).value;t.removeAttribute('aria-invalid');});
+  document.getElementById('depart')._ll=document.getElementById('qb-dep')._ll||null;
+  document.getElementById('arrivee')._ll=document.getElementById('qb-arr')._ll||null;
+  document.getElementById('trip').value=qbAR()?'ar':'ow'; setTrip();
+  document.getElementById('qb-note').hidden=false;
+  if(lastQuote) showQuote(document.getElementById('f-quote'),lastQuote);
+  document.getElementById('reserver').scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){try{document.getElementById('nom').focus({preventScroll:true});}catch(err){}},600);
+}
+qb.addEventListener('submit',function(e){
+  e.preventDefault();
+  var miss=[].slice.call(qb.querySelectorAll('[required]')).filter(function(f){return !f.value.trim();});
+  miss.forEach(function(f){f.setAttribute('aria-invalid','true');});
+  if(miss.length){miss[0].focus();return;}
+  var box=document.getElementById('qb-quote'); showQuote(box,'wait');
+  quote(document.getElementById('qb-dep'),document.getElementById('qb-arr'),qbAR(),document.getElementById('qb-time').value,document.getElementById('qb-rtime').value).then(function(q){lastQuote=q; showQuote(box,q);});
+});
+
 document.getElementById('copy').addEventListener('click',function(){
   var b=this;
   function sel(){var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);}

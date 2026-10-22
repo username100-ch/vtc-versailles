@@ -10,13 +10,13 @@ IDX={'fr':0,'en':1,'ar':2}
 URL={'fr':BASE,'en':BASE+'en/','ar':BASE+'ar/'}
 META={
 'fr':dict(title="Chauffeur VTC à Versailles et Paris | Carrosse Driver",
-  desc="Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG et Orly, palaces parisiens (George V, Plaza Athénée, Peninsula), Paris, Tour Eiffel, Disneyland, Château de Versailles. Prix fixe, réservation par WhatsApp.",
+  desc="Chauffeur privé VTC à Versailles, disponible dans toute l'Île-de-France 24h/24 : aéroports Roissy-CDG et Orly, palaces parisiens (George V, Plaza Athénée, Peninsula), Paris, Tour Eiffel, Disneyland, Château de Versailles. Devis instantané en ligne, réservation par WhatsApp.",
   og="fr_FR"),
 'en':dict(title="Private Driver in Paris & Versailles | Chauffeur Service | Carrosse Driver",
-  desc="Private chauffeur in Paris and Versailles, 24/7: airport transfers from Charles de Gaulle and Orly, Paris palace hotels (George V, Plaza Athénée, Peninsula), shopping on the Champs-Élysées, Disneyland and Palace of Versailles tours. Fixed price, book on WhatsApp.",
+  desc="Private chauffeur in Paris and Versailles, 24/7: airport transfers from Charles de Gaulle and Orly, Paris palace hotels (George V, Plaza Athénée, Peninsula), shopping on the Champs-Élysées, Disneyland and Palace of Versailles tours. Instant online quote, book on WhatsApp.",
   og="en_GB"),
 'ar':dict(title="سائق خاص في باريس وفرساي | ليموزين وتوصيل من المطار | كاروس درايفر",
-  desc="سائق خاص في باريس وفرساي على مدار الساعة: استقبال وتوصيل من مطار شارل ديغول وأورلي إلى فنادق باريس الفاخرة (جورج الخامس، بلازا أثينيه، بينينسولا)، جولات تسوق في الشانزليزيه، ديزني لاند وقصر فرساي. سيارة مع سائق للعائلات بسعر ثابت، والحجز عبر واتساب.",
+  desc="سائق خاص في باريس وفرساي على مدار الساعة: استقبال وتوصيل من مطار شارل ديغول وأورلي إلى فنادق باريس الفاخرة (جورج الخامس، بلازا أثينيه، بينينسولا)، جولات تسوق في الشانزليزيه، ديزني لاند وقصر فرساي. سيارة مع سائق للعائلات مع سعر فوري عبر الموقع، والحجز عبر واتساب.",
   og="ar_AR"),
 }
 def head_tags(l):
